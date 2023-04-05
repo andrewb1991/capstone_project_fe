@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import useFetch from "../utils/useFetch";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MDBContainer,
   MDBTabs,
@@ -17,7 +17,7 @@ const Login = () => {
   const [text, setText] = useState("");
   const [formData, setFormData] = useState({});
   const [formLogin, setFormLogin] = useState({});
-  const [authenticated, setAuthenticated] = useState(null)
+  const [authenticated, setAuthenticated] = useState(null);
   const navigate = useNavigate();
 
 
@@ -25,9 +25,7 @@ const Login = () => {
     setText(value);
   });
 
-useEffect(()=>{
 
-})
 
   const newCustomer = {
     name: formData.nome,
@@ -53,18 +51,18 @@ useEffect(()=>{
   };
 
   const loginUser = async (e) => {
+    const alertSuccess = () => toast.success('success');
     await fetch("http://localhost:6060/login/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(Customer),
-    }).then((response)=>{
-        if(response.status === 200){
-            return navigate("/home")
-            }
-        
-    })
+    }).then((response) => {
+      if (response.status === 200) {
+        return navigate("/home");
+      }
+    });
   };
 
   const [justifyActive, setJustifyActive] = useState("tab1");
@@ -78,140 +76,149 @@ useEffect(()=>{
   };
 
   return (
-    <MDBContainer className="p-3 my-5 d-flex flex-column w-50 mt-64">
-      <MDBTabs
-        pills
-        justify
-        className="mb-3 d-flex flex-row justify-content-between"
-      >
-        <MDBTabsItem>
-          <MDBTabsLink
-            onClick={() => handleJustifyClick("tab1")}
-            active={justifyActive === "tab1"}
-          >
-            Login
-          </MDBTabsLink>
-        </MDBTabsItem>
-        <MDBTabsItem>
-          <MDBTabsLink
-            onClick={() => handleJustifyClick("tab2")}
-            active={justifyActive === "tab2"}
-          >
-            Registrati
-          </MDBTabsLink>
-        </MDBTabsItem>
-        <MDBTabsItem>
+    <>
+      <MDBContainer className="p-3 my-5 d-flex flex-column w-50 mt-64">
+        <MDBTabs
+          pills
+          justify
+          className="mb-3 d-flex flex-row justify-content-between"
+        >
+          <MDBTabsItem>
+            <MDBTabsLink
+              onClick={() => handleJustifyClick("tab1")}
+              active={justifyActive === "tab1"}
+            >
+              Login
+            </MDBTabsLink>
+          </MDBTabsItem>
+          <MDBTabsItem>
+            <MDBTabsLink
+              onClick={() => handleJustifyClick("tab2")}
+              active={justifyActive === "tab2"}
+            >
+              Registrati
+            </MDBTabsLink>
+          </MDBTabsItem>
+          <MDBTabsItem>
             <Link to={"/home"}>
-          <MDBTabsLink
-            onClick={() => handleJustifyClick("tab1")}
-            active={justifyActive === "tab1"}
-          >
-            RISERVATO
-          </MDBTabsLink>
-          </Link>
-        </MDBTabsItem>
-      </MDBTabs>
+              <MDBTabsLink
+                onClick={() => handleJustifyClick("tab1")}
+                active={justifyActive === "tab1"}
+              >
+                RISERVATO
+              </MDBTabsLink>
+            </Link>
+          </MDBTabsItem>
+        </MDBTabs>
 
-      <MDBTabsContent>
-        <MDBTabsPane show={justifyActive === "tab1"}>
-          <div className="text-center mb-3">
-            <div
-              className="d-flex justify-content-between mx-auto"
-              style={{ width: "40%" }}
-            ></div>
-          </div>
+        <MDBTabsContent>
+          <MDBTabsPane show={justifyActive === "tab1"}>
+            <div className="text-center mb-3">
+              <div
+                className="d-flex justify-content-between mx-auto"
+                style={{ width: "40%" }}
+              ></div>
+            </div>
 
-          <MDBInput             onChange={(e) =>
-              setFormLogin({
-                ...formLogin,
-                email: e.target.value,
-              })
-            } wrapperClass="mb-4" label="Email" id="form1" type="email" />
-          <MDBInput onChange={(e) =>
-              setFormLogin({
-                ...formLogin,
-                password: e.target.value,
-              })
-            } 
-            wrapperClass="mb-4"
-            label="Password"
-            id="form2"
-            type="password"
-          />
-          <MDBBtn onClick={loginUser}  className="mb-4 w-100">
-            Accedi
-          </MDBBtn>
-        </MDBTabsPane>
+            <MDBInput
+              onChange={(e) =>
+                setFormLogin({
+                  ...formLogin,
+                  email: e.target.value,
+                })
+              }
+              wrapperClass="mb-4"
+              label="Email"
+              id="form1"
+              type="email"
+            />
+            <MDBInput
+              onChange={(e) =>
+                setFormLogin({
+                  ...formLogin,
+                  password: e.target.value,
+                })
+              }
+              wrapperClass="mb-4"
+              label="Password"
+              id="form2"
+              type="password"
+            />
+            <MDBBtn onClick={loginUser} className="mb-4 w-100">
+              Accedi
+            </MDBBtn>
+          </MDBTabsPane>
 
-        <MDBTabsPane show={justifyActive === "tab2"}>
-          <div className="text-center mb-3">
-            <p>Inserisci le tue informazioni</p>
+          <MDBTabsPane show={justifyActive === "tab2"}>
+            <div className="text-center mb-3">
+              <p>Inserisci le tue informazioni</p>
 
-            <div
-              className="d-flex justify-content-between mx-auto"
-              style={{ width: "40%" }}
-            ></div>
-          </div>
+              <div
+                className="d-flex justify-content-between mx-auto"
+                style={{ width: "40%" }}
+              ></div>
+            </div>
 
-          <MDBInput
-            wrapperClass="mb-4"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                name: e.target.value,
-              })
-            }
-            label="Nome"
-            id="form1"
-            type="text"
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                surname: e.target.value,
-              })
-            }
-            label="Cognome"
-            id="form1"
-            type="text"
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                email: e.target.value,
-              })
-            }
-            label="Email"
-            id="form1"
-            type="email"
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                password: e.target.value,
-              })
-            }
-            label="Password"
-            id="form1"
-            type="password"
-          />
+            <MDBInput
+              wrapperClass="mb-4"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  name: e.target.value,
+                })
+              }
+              label="Nome"
+              id="form1"
+              type="text"
+            />
+            <MDBInput
+              wrapperClass="mb-4"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  surname: e.target.value,
+                })
+              }
+              label="Cognome"
+              id="form1"
+              type="text"
+            />
+            <MDBInput
+              wrapperClass="mb-4"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  email: e.target.value,
+                })
+              }
+              label="Email"
+              id="form1"
+              type="email"
+            />
+            <MDBInput
+              wrapperClass="mb-4"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  password: e.target.value,
+                })
+              }
+              label="Password"
+              id="form1"
+              type="password"
+            />
 
-          <div className="d-flex justify-content-center mb-4">
-            {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' /> */}
-          </div>
+            <div className="d-flex justify-content-center mb-4">
+              {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' /> */}
+            </div>
 
-          <MDBBtn onClick={registerUser} className="mb-4 w-100">
-            Continua
-          </MDBBtn>
-        </MDBTabsPane>
-      </MDBTabsContent>
-    </MDBContainer>
+            <MDBBtn onClick={registerUser} className="mb-4 w-100">
+              Continua
+            </MDBBtn>
+          </MDBTabsPane>
+        </MDBTabsContent>
+      </MDBContainer>
+    </>
   );
 };
 
