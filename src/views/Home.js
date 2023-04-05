@@ -52,6 +52,10 @@ const Login = () => {
         "Content-type": "application/json",
       },
       body: JSON.stringify(Customer),
+    }).then((response)=>{
+    if(response.status === 200){
+    alert("Login effettuato con succeso")
+    }
     })
     console.log(Customer);
   };
@@ -87,6 +91,14 @@ const Login = () => {
             active={justifyActive === "tab2"}
           >
             Registrati
+          </MDBTabsLink>
+        </MDBTabsItem>
+        <MDBTabsItem>
+          <MDBTabsLink
+            onClick={() => handleJustifyClick("tab1")}
+            active={justifyActive === "tab1"}
+          >
+            RISERVATO
           </MDBTabsLink>
         </MDBTabsItem>
       </MDBTabs>

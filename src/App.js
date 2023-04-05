@@ -7,12 +7,15 @@ import {
   Route,
   Link 
 } from "react-router-dom"
+import ProductsList from './views/products/ProductsList';
+import NavbarPage from './views/NavBar';
 function App() {
   return (
     <div className="App">
      <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/home" element={<ProductsList/>}/>
       </Routes>
     </Router>  
     </div>
