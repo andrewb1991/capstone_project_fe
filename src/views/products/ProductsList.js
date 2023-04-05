@@ -18,9 +18,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 function ProductsList() {
   const [search, setSearch] = useState("");
-  const { data, loading, error } = useFetch(
-    `http://localhost:6060/allproducts`
-  );
+  const { data, loading, error } = useFetch(`http://localhost:6060/allproducts`);
   console.log(data);
   return (
     <>

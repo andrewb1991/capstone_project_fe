@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import useFetch from "../utils/useFetch";
+import { Link, useNavigate} from "react-router-dom";
 import {
   MDBContainer,
   MDBTabs,
@@ -12,14 +13,21 @@ import {
   MDBInput,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
-
 const Login = () => {
   const [text, setText] = useState("");
   const [formData, setFormData] = useState({});
   const [formLogin, setFormLogin] = useState({});
+  const [authenticated, setAuthenticated] = useState(null)
+  const navigate = useNavigate();
+
+
   const handleChange = useCallback((value) => {
     setText(value);
   });
+
+useEffect(()=>{
+
+})
 
   const newCustomer = {
     name: formData.nome,
@@ -45,7 +53,6 @@ const Login = () => {
   };
 
   const loginUser = async (e) => {
-    e.preventDefault();
     await fetch("http://localhost:6060/login/", {
       method: "POST",
       headers: {
@@ -53,11 +60,11 @@ const Login = () => {
       },
       body: JSON.stringify(Customer),
     }).then((response)=>{
-    if(response.status === 200){
-    alert("Login effettuato con succeso")
-    }
+        if(response.status === 200){
+            return navigate("/home")
+            }
+        
     })
-    console.log(Customer);
   };
 
   const [justifyActive, setJustifyActive] = useState("tab1");
@@ -94,12 +101,14 @@ const Login = () => {
           </MDBTabsLink>
         </MDBTabsItem>
         <MDBTabsItem>
+            <Link to={"/home"}>
           <MDBTabsLink
             onClick={() => handleJustifyClick("tab1")}
             active={justifyActive === "tab1"}
           >
             RISERVATO
           </MDBTabsLink>
+          </Link>
         </MDBTabsItem>
       </MDBTabs>
 
@@ -129,8 +138,7 @@ const Login = () => {
             id="form2"
             type="password"
           />
-
-          <MDBBtn onClick={loginUser} className="mb-4 w-100">
+          <MDBBtn onClick={loginUser}  className="mb-4 w-100">
             Accedi
           </MDBBtn>
         </MDBTabsPane>
