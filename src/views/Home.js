@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import useFetch from "../utils/useFetch";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
   MDBContainer,
@@ -13,6 +14,10 @@ import {
   MDBInput,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
+import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
+
+// controlla form registrazione cliente con urgenza, non prende nome e cognome e non compaiono nel payload del token 
 const Login = () => {
   const [text, setText] = useState("");
   const [formData, setFormData] = useState({});
@@ -20,7 +25,7 @@ const Login = () => {
   const [authenticated, setAuthenticated] = useState(null);
   const navigate = useNavigate();
 
-
+ 
   const handleChange = useCallback((value) => {
     setText(value);
   });
@@ -36,7 +41,7 @@ const Login = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:6060/register/", {
+    await fetch("http://localhost:7070/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,18 +56,14 @@ const Login = () => {
   };
 
   const loginUser = async (e) => {
-    const alertSuccess = () => toast.success('success');
-    await fetch("http://localhost:6060/login/", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(Customer),
-    }).then((response) => {
-      if (response.status === 200) {
-        return navigate("/home");
-      }
-    });
+    e.preventDefault()
+      await axios.post("http://localhost:7070/login/", Customer )
+      .then((response)=> {
+        if(response.status === 200){
+          localStorage.setItem("authCode", response.data.token)
+          navigate("/home")
+        }
+      } )
   };
 
   const [justifyActive, setJustifyActive] = useState("tab1");
@@ -74,6 +75,8 @@ const Login = () => {
 
     setJustifyActive(value);
   };
+
+
 
   return (
     <>
@@ -100,14 +103,13 @@ const Login = () => {
             </MDBTabsLink>
           </MDBTabsItem>
           <MDBTabsItem>
-            <Link to={"/home"}>
               <MDBTabsLink
-                onClick={() => handleJustifyClick("tab1")}
-                active={justifyActive === "tab1"}
+                onClick={() => handleJustifyClick("tab3")}
+                active={justifyActive === "tab3"}
               >
                 RISERVATO
               </MDBTabsLink>
-            </Link>
+
           </MDBTabsItem>
         </MDBTabs>
 
@@ -216,6 +218,34 @@ const Login = () => {
               Continua
             </MDBBtn>
           </MDBTabsPane>
+
+          <MDBTabsPane show={justifyActive === "tab3"}>
+            <div className="text-center mb-3">
+              <div
+                className="d-flex justify-content-between mx-auto"
+                style={{ width: "40%" }}
+              ></div>
+            </div>
+
+            <MDBInput
+          
+              wrapperClass="mb-4"
+              label="Email"
+              id="form1"
+              type="email"
+            />
+            <MDBInput
+              
+              wrapperClass="mb-4"
+              label="Password"
+              id="form1"
+              type="password"
+            />
+            <MDBBtn className="mb-4 w-100">
+              Accesso Dipendente
+            </MDBBtn>
+          </MDBTabsPane>
+
         </MDBTabsContent>
       </MDBContainer>
     </>
