@@ -17,7 +17,6 @@ import {
 import jwt_decode from "jwt-decode";
 import jwtDecode from "jwt-decode";
 
-// controlla form registrazione cliente con urgenza, non prende nome e cognome e non compaiono nel payload del token 
 const Login = () => {
   const [text, setText] = useState("");
   const [formData, setFormData] = useState({});
@@ -166,7 +165,7 @@ const Login = () => {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  name: e.target.value,
+                  nome: e.target.value,
                 })
               }
               label="Nome"
@@ -178,7 +177,7 @@ const Login = () => {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  surname: e.target.value,
+                  cognome: e.target.value,
                 })
               }
               label="Cognome"
