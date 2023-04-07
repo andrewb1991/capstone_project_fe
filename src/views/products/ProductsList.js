@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
+import Pagination from 'react-bootstrap/Pagination';
 import {
   MDBContainer,
   MDBRow,
@@ -20,7 +21,11 @@ const session = localStorage.getItem("authCode")
 
 function ProductsList() {
   const [search, setSearch] = useState("");
-  const { data, loading, error } = useFetch(`http://localhost:7070/allproducts`);
+  const [page, setPage] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
+  const limit = 6;
+
+  const { data, loading, error } = useFetch(`http://localhost:7070/allproducts?page=${page}&limit=${limit}`);
   console.log(data);
 
 
@@ -30,6 +35,25 @@ function ProductsList() {
    console.log(session)
   }
   }, [])
+
+  useEffect(() => {
+    if(data){
+      setPageCount(data.pageCount)
+    }
+}, [data]);
+
+const handlePrevious = () => {
+  setPage((page) =>{
+    if(page === 1) return page;
+  return page - 1});
+};
+ 
+const handleNext = () => {
+  setPage((page) => {
+    if(page === pageCount) return page;
+  return page +1;
+  });
+};
 
   return (
     <>
@@ -59,6 +83,13 @@ function ProductsList() {
   ))}               
    
                         </MDBRow>
+                        <div>
+    <Pagination className="justify-content-center">
+      <Pagination.Prev  onClick={handlePrevious} />
+      <Pagination.Item active>{page}</Pagination.Item>
+      <Pagination.Next onClick={handleNext} />
+      </Pagination>
+  </div>
                       </MDBContainer>
                       </>
               )}
