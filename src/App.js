@@ -12,10 +12,9 @@ import NavbarPage from './views/NavBar';
 function App() {
   return (
     <div className="App">
-      <NavbarPage/>
      <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" exact element={<Home/>}/>
         <Route path="home" element={<ProductsList/>}/>
       </Routes>
     </Router>  

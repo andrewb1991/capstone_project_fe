@@ -18,7 +18,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
 const session = localStorage.getItem("authCode")
 
-
 function ProductsList() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
