@@ -12,6 +12,7 @@ import NavbarPage from './views/NavBar';
 function App() {
   return (
     <div className="App">
+      <NavbarPage/>
      <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>

@@ -26,14 +26,15 @@ export const SingleProduct = (props) => {
           className="bg-image rounded hover-zoom"
         >
           <MDBCardBody>
-            <MDBCardImage src={thumbnail} fluid className="w-50" />
+            <MDBCardImage src={thumbnail} fluid className="w-50 mb-5" />
             <h5 className="card-title mb-3">{product}</h5>
             <p>{category}</p>
             <h6 className="mb-3">{price} €</h6>
             <h6 className="mb-3">{description} €</h6>
           </MDBCardBody>
           <div className="mask">
-            <div className="d-flex justify-content-start align-items-end h-100"></div>
+            <div className="d-flex justify-content-start align-items-end h-100">
+            </div>
           </div>
           <div className="hover-overlay">
             <div
