@@ -20,7 +20,7 @@ const session = localStorage.getItem("authCode")
 
 function ProductsList() {
   const [search, setSearch] = useState("");
-  const { data, loading, error } = useFetch(`http://localhost:6060/allproducts`);
+  const { data, loading, error } = useFetch(`http://localhost:7070/allproducts`);
   console.log(data);
 
 
@@ -33,24 +33,31 @@ function ProductsList() {
 
   return (
     <>
-          <Form>
+    {loading && <h1>Loading Products...</h1>}
+
+                <MDBContainer fluid className="my-5 text-center">
+
+                <MDBRow>
+                <h4 className="mt-4 mb-5">
+                      <strong>Smartphone, Tablet e Accessori</strong>
+                    </h4>
+                    <Form>
           <InputGroup className='my-3'>
             <Form.Control
               onChange={(e) => setSearch(e.target.value)}
-              placeholder='Search Blogs'
+              placeholder='Search Products'
             />
           </InputGroup>
         </Form>
-                <MDBContainer fluid className="my-5 text-center">
-                <MDBRow>
-                  <MDBCol md="12" lg="4" className="mb-4">
-                    <h4 className="mt-4 mb-5">
-                      <strong>Smartphone, Tablet e Accessori</strong>
-                    </h4>
-
-                <SingleProduct/>
+                    { !loading && data && data.filter((item)=>{
+        return search.toLowerCase() === ''
+         ? item
+         : item.product.toLowerCase().includes(search); 
+  })
+  .map((post, i) => (
+    <SingleProduct key={post.id}{...post}/>
+  ))}               
    
-                        </MDBCol>
                         </MDBRow>
                       </MDBContainer>
                       </>
