@@ -18,8 +18,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 export const SingleProduct = (props) => {
   const { product, thumbnail, description, category, price } = props;
   return (
-    <MDBCol md="12" lg="4" className="mb-4">
-      <MDBCard>
+    <MDBCol md="6" lg="3" className="mb-4">
+      <MDBCard className="h-100">
         <MDBRipple
           rippleColor="light"
           rippleTag="div"

@@ -22,7 +22,7 @@ function ProductsList() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
-  const limit = 6;
+  const limit = 8;
 
   const { data, loading, error } = useFetch(`http://localhost:7070/allproducts?page=${page}&limit=${limit}`);
   console.log(data);
