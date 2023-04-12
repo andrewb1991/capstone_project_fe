@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import ProductsList from './views/products/ProductsList';
 import NavbarPage from './views/NavBar';
+import EmployeesList from './views/employees/EmployeesList';
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
      <Router>
      <NavbarPage/>
       <Routes>
+        <Route path="/employees" exact element={<EmployeesList/>}/>
         <Route path="/" exact element={<Home/>}/>
           <Route path="/home" element={<ProductsList/>}/>
           <Route path="/home" element={<NavbarPage/>}/>

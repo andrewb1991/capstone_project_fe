@@ -86,7 +86,7 @@ const Login = () => {
   if(response.status === 200){
   localStorage.setItem("emplCode", response.data.token);
   alert("Login Employee")
-  navigate("/manage")
+  navigate("/employees")
   }
   else{
   return alert("Invalid Credential")
