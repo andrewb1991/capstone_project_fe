@@ -10,13 +10,17 @@ import {
 import ProductsList from './views/products/ProductsList';
 import NavbarPage from './views/NavBar';
 function App() {
+
   return (
+
     <div className="App">
      <Router>
+     <NavbarPage/>
       <Routes>
         <Route path="/" exact element={<Home/>}/>
-        <Route path="home" element={<ProductsList/>}/>
-      </Routes>
+          <Route path="/home" element={<ProductsList/>}/>
+          <Route path="/home" element={<NavbarPage/>}/>
+        </Routes>
     </Router>  
     </div>
   );

@@ -23,6 +23,7 @@ const Login = () => {
   const [src, setSrc] = useState("");
   const [formData, setFormData] = useState({});
   const [formLogin, setFormLogin] = useState({});
+  const [formEmpl, setFormEmpl] = useState({});
   const [authenticated, setAuthenticated] = useState(null);
   const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ const Login = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:7070/register/", {
+    await fetch("http://localhost:8080/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +60,7 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:7070/login/", Customer)
+      .post("http://localhost:8080/login/", Customer)
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("authCode", response.data.token);
@@ -71,6 +72,27 @@ const Login = () => {
         }
       });
   };
+
+  const Employee = {
+  email: formEmpl.email,
+  password: formEmpl.password
+  }
+
+  const loginEmployee = async (e) =>{
+  e.preventDefault();
+  await axios
+  .post("http://localhost:8080/auth/employees", Employee)
+  .then((response)=>{
+  if(response.status === 200){
+  localStorage.setItem("emplCode", response.data.token);
+  alert("Login Employee")
+  navigate("/manage")
+  }
+  else{
+  return alert("Invalid Credential")
+  }
+  })
+  }
 
   const [justifyActive, setJustifyActive] = useState("tab1");
 
@@ -249,19 +271,30 @@ const Login = () => {
               ></div>
             </div>
 
-            <MDBInput
+            <MDBInput onChange={(e) =>
+                setFormEmpl({
+                  ...formEmpl,
+                  email: e.target.value,
+                })
+              }
               wrapperClass="mb-4"
               label="Email"
               id="form1"
               type="email"
             />
             <MDBInput
+            onChange={(e) =>
+              setFormEmpl({
+                ...formEmpl,
+                password: e.target.value,
+              })
+            }
               wrapperClass="mb-4"
               label="Password"
               id="form1"
               type="password"
             />
-            <MDBBtn className="mb-4 w-100">Accesso Dipendente</MDBBtn>
+            <MDBBtn onClick={loginEmployee} className="mb-4 w-100">Accesso Dipendente</MDBBtn>
           </MDBTabsPane>
         </MDBTabsContent>
       </MDBContainer>

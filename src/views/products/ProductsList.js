@@ -24,7 +24,7 @@ function ProductsList() {
   const [pageCount, setPageCount] = useState(1);
   const limit = 8;
 
-  const { data, loading, error } = useFetch(`http://localhost:7070/allproducts?page=${page}&limit=${limit}`);
+  const { data, loading, error } = useFetch(`http://localhost:8080/allproducts?page=${page}&limit=${limit}`);
   console.log(data);
 
 

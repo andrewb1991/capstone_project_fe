@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import {
   MDBContainer,
   MDBNavbar,
@@ -14,60 +15,86 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBCollapse,
-} from 'mdb-react-ui-kit';
+} from "mdb-react-ui-kit";
+import axios from "axios";
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
+  const navigate = useNavigate();
+
+  const navigateHome = async (e) => {
+    return navigate("/home");
+  };
+
+//   const smartphoneFilter = async (e) => {
+//     e.preventDefault();
+//     await axios
+//       .get("http://localhost:8080/allproducts/Smartphone")
+//       .then((response) => {
+//         if (response.status === 200) {
+//           navigate("/home");
+//         }
+//         else{
+// return console.log(e)        
+// }
+//       });
+//   };
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light' className='sticky-top'>
+    <MDBNavbar expand="lg" light bgColor="light" className="sticky-top">
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#'>Brand</MDBNavbarBrand>
+        <MDBNavbarBrand>
+          <a href="/home">
+            {" "}
+            <img
+              className="img-thumbnail"
+              width={60}
+              height={80}
+              src="https://res.cloudinary.com/dpb7beo1e/image/upload/v1681290732/logo_transparent_background_rjoa2g.png"
+            ></img>
+          </a>
+        </MDBNavbarBrand>
 
         <MDBNavbarToggler
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
           onClick={() => setShowBasic(!showBasic)}
         >
-          <MDBIcon icon='bars' fas />
+          <MDBIcon icon="bars" fas />
         </MDBNavbarToggler>
 
         <MDBCollapse navbar show={showBasic}>
-          <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
+          <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
-                Home
+              <MDBNavbarLink active aria-current="page" href="#">
+                Smartphone
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
+              <MDBNavbarLink active aria-current="page" href="#">Tablet</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink active aria-current="page" href="#">Accessori</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink active aria-current="page" href="#">Ordini</MDBNavbarLink>
             </MDBNavbarItem>
 
-            <MDBNavbarItem>
-              <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link' role='button'>
-                  Dropdown
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem link>Action</MDBDropdownItem>
-                  <MDBDropdownItem link>Another action</MDBDropdownItem>
-                  <MDBDropdownItem link>Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
-              </MDBNavbarLink>
+              
             </MDBNavbarItem>
           </MDBNavbarNav>
-
-          <form className='d-flex input-group w-auto'>
-            <input type='search' className='form-control' placeholder='Type query' aria-label='Search' />
-            <MDBBtn color='primary'>Search</MDBBtn>
-          </form>
+          <MDBDropdown>
+                <MDBDropdownToggle tag="a" className="nav-link" role="button">
+                  Account
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem link>Visualizza Account</MDBDropdownItem>
+                  <MDBDropdownItem link href="/">Esci</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
