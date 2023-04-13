@@ -144,11 +144,9 @@ const ManageProductsList = () => {
             </th>
             <th scope="col">CATEGORIA</th>
             <th scope="col">PREZZO</th>
-            <th scope="col">
-              <i class="fa-solid fa-pen-to-square"></i>
+            <th scope="col">MODIFICA
             </th>
-            <th scope="col">
-              <i class="fa-solid fa-trash"></i>
+            <th scope="col">ELIMINA
             </th>
           </tr>
         </MDBTableHead>
@@ -180,12 +178,12 @@ const ManageProductsList = () => {
                     </td>
                     <td>
                       <MDBBtn color="primary" rounded size="sm">
-                        Edit
+                      <i class="fa-solid fa-pen-to-square"></i>
                       </MDBBtn>
                     </td>
                     <td>
                       <MDBBtn color="danger" rounded size="sm">
-                        Delete
+                      <i class="fa-solid fa-trash"></i>
                       </MDBBtn>
                     </td>{" "}
                   </tr>
