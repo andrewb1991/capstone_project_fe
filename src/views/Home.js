@@ -42,7 +42,7 @@ const Login = () => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:8080/register/", {
+    await fetch("http://localhost:7070/register/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8080/login/", Customer)
+      .post("http://localhost:7070/login/", Customer)
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("authCode", response.data.token);
@@ -81,12 +81,12 @@ const Login = () => {
   const loginEmployee = async (e) =>{
   e.preventDefault();
   await axios
-  .post("http://localhost:8080/auth/employees", Employee)
+  .post("http://localhost:7070/auth/employees", Employee)
   .then((response)=>{
   if(response.status === 200){
   localStorage.setItem("emplCode", response.data.token);
   alert("Login Employee")
-  navigate("/employees")
+  navigate("/homeemployee")
   }
   else{
   return alert("Invalid Credential")
@@ -247,15 +247,8 @@ const Login = () => {
               type="text"
             />
             <div>
-      {/* <MDBFile label='Image Profile' id='upload' type="file" enctype="multipart/form-data" onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  imageprofile: e.target.value,
-                })
-              } /> */}
     </div>
             <div className="d-flex justify-content-center mb-4">
-              {/* <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' /> */}
             </div>
 
             <MDBBtn onClick={registerUser} className="mb-4 w-100">
