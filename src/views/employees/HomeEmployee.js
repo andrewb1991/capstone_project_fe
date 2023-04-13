@@ -15,6 +15,8 @@ import {
   MDBTabsContent,
   MDBTabsPane,
 } from "mdb-react-ui-kit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const HomeEmployee = () => {
       const navigate = useNavigate();
       const handleEmployesPage = () =>{

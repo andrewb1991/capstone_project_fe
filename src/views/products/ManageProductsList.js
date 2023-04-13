@@ -30,6 +30,9 @@ const ManageProductsList = () => {
   const [newProductFrom, setNewProductForm] = useState({});
   const [isloading, setLoading] = useState(false);
 
+  const handleBackPage = () => {
+  navigate("/homeemployee")
+  }
 
 
 
@@ -64,7 +67,8 @@ const ManageProductsList = () => {
   return (
     <>
       <h1 className="text-primary m-3">Gestione Prodotti</h1>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap ">
+        <MDBBtn onClick={handleBackPage} className="mx-2 text-xl-left" color="secondary"><i class="fa-solid fa-circle-arrow-left fa-2xl"></i></MDBBtn>
         <MDBBtn className="mx-2 text-xl-left" color="secondary" onClick={toggleShow}>
           Aggiungi Nuovo
         </MDBBtn>
