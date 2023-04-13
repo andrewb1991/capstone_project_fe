@@ -49,7 +49,8 @@ const ManageProductsList = () => {
           .post("http://localhost:7070/allproducts/", newProduct)
           .then((response) => {
             if (response.status === 200) {
-              alert("Product Added!")
+              window.confirm("Aggiungere il prodotto?")
+              window.location.reload(true)
               navigate("/manageproducts");
             }
             else{
