@@ -26,14 +26,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProductEditModal from "./ProductEditModal";
 
 const ManageProductsList = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
   const [fullscreenXlModal, setFullscreenXlModal] = useState(false);
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
   const [newProductFrom, setNewProductForm] = useState({});
   const [editProductForm, setEditProductForm] = useState({});
   const [basicModal, setBasicModal] = useState(false);
-  const toggleShowEdit = (_id) => setBasicModal(!basicModal, _id);
+  const toggleShowEdit = (id) => setBasicModal(!basicModal);
   
   const handleBackPage = () => {
     navigate("/homeemployee");
@@ -256,7 +255,7 @@ const ManageProductsList = () => {
                     </td>
                     <td>
                       <MDBBtn onClick={toggleShowEdit} color="primary" rounded size="sm">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
       <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
@@ -338,7 +337,7 @@ const ManageProductsList = () => {
               <MDBBtn color='secondary' onClick={toggleShowEdit}>
                 Close
               </MDBBtn>
-              <MDBBtn onClick={editProduct(product._id)}>Save changes</MDBBtn>
+              <MDBBtn>Save changes</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
@@ -350,7 +349,7 @@ const ManageProductsList = () => {
                         rounded
                         size="sm"
                       >
-                        <i class="fa-solid fa-trash"></i>
+                        <i class="fa-solid fa-trash fa-xl"></i>
                       </MDBBtn>
                     </td>{" "}
                   </tr>
