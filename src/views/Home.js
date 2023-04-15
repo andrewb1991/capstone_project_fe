@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useEffect } from "react";
 import useFetch from "../utils/useFetch";
+import { Outlet } from "react-router-dom";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -60,7 +61,7 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:7070/login/", Customer)
+      .post(`http://localhost:7070/login`, Customer)
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("authCode", response.data.token);

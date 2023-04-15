@@ -13,6 +13,7 @@ import {
   MDBBtn,
   MDBRipple,
 } from "mdb-react-ui-kit";
+import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
@@ -27,10 +28,13 @@ function ProductsList() {
   const { data, loading, error } = useFetch(`http://localhost:7070/allproductspagination?page=${page}&limit=${limit}`);
   console.log(data);
 
+  // const searchProducts = () =>{
+  // axios.get("http://localhost:7070/allproducts")
+  // }
 
   useEffect(()=>{
   if(session){
-  //  const auth =  jwt_decode(session)
+   const auth =  localStorage.getItem("authCode")
    console.log(session)
   }
   }, [])
