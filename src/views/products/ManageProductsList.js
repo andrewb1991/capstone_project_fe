@@ -34,33 +34,35 @@ const ManageProductsList = () => {
   const [newProductFrom, setNewProductForm] = useState({});
   const [editProductForm, setEditProductForm] = useState({});
   const [basicModal, setBasicModal] = useState(false);
-  const toggleShowEdit = (_id) => setBasicModal(!basicModal);
   
   const handleBackPage = () => {
     navigate("/homeemployee");
   };
+  const toggleShowEdit = (_id) => {
+    setBasicModal(!basicModal);
+  }
 
   const editSubmit = (_id, e) => {
-    // e.preventDefault()
     confirmAlert({
       title: `Modifica`,
       message: `Vuoi modificare il prodotto ${_id}?`,
       buttons: [
         {
           label: 'Yes',
-          onClick: () => editProduct(_id, e) 
+          onClick: () => toggleShowEdit(_id) 
         },
         {
           label: 'No',
           onClick: () => alert('Click No')
         }
       ]
-    });
+    })
   }
 
 
 
   const editProduct = async (_id, e) => {
+
     const editProduct = {
       product: newProductFrom.product,
       thumbnail: newProductFrom.thumbnail,
@@ -304,7 +306,7 @@ const ManageProductsList = () => {
           <MDBModalContent>
             <MDBModalHeader>
               <MDBModalTitle>Modifica {product.product}</MDBModalTitle>
-              <MDBBtn className='btn-close' color='none' onClick={toggleShowEdit}></MDBBtn>
+              <MDBBtn className='btn-close' color='none'></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody><form>
                 <MDBInput onChange={(e) =>
