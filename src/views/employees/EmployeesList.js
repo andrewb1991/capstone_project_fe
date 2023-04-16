@@ -17,6 +17,8 @@ import {
   MDBInput,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,7 +42,6 @@ const EmployeesList = () => {
       surname: newEmployeeForm.surname,
       email: newEmployeeForm.email,
       password: newEmployeeForm.password,
-      role: newEmployeeForm.role,
     };
     e.preventDefault();
     await axios
@@ -55,6 +56,35 @@ const EmployeesList = () => {
         }
       });
   };
+
+  const deleteEmployee = (_id, e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:7070/auth/employees/${_id}`).then((response) => {
+      if (response.status === 200) {
+        navigate("/manageemployess");
+        window.location.reload(true);
+      }
+    });
+  };
+
+
+  const deleteSubmit = (_id, e) => {
+    confirmAlert({
+      title: `Elimina`,
+      message: 'Vuoi eliminare il dipendente?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => deleteEmployee(_id, e) 
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No')
+        }
+      ]
+    });
+  }
+
 
   return (
     <>
@@ -158,20 +188,6 @@ const EmployeesList = () => {
                   rows={4}
                   label="Password"
                 />
-                                <MDBInput
-                  onChange={(e) =>
-                    setNewEmployeeForm({
-                      ...newEmployeeForm,
-                      role: e.target.value,
-                    })
-                  }                  className="text-primary"
-                  wrapperClass="mb-4"
-                  textarea
-                  type="text"
-                  id="form6Example7"
-                  rows={4}
-                  label="Ruolo"
-                />
               </form>
             </MDBModalBody>
             <MDBModalFooter>
@@ -225,12 +241,14 @@ const EmployeesList = () => {
                     </td>
                     <td>
                       {" "}
-                      <MDBBtn color="link" rounded size="sm">
+                      <MDBBtn color='secondary' rounded size="sm">
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
                     <td>
-                      <MDBBtn color="link" rounded size="sm">
+                      <MDBBtn color="danger"
+                        rounded
+                        size="sm" onClick={(e) =>deleteSubmit(employee._id, e)}>
                         <i class="fa-solid fa-trash fa-xl"></i>
                       </MDBBtn>
                     </td>

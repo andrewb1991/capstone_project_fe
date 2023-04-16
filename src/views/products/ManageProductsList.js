@@ -4,6 +4,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import {
   MDBBadge,
   MDBBtn,
@@ -32,11 +34,31 @@ const ManageProductsList = () => {
   const [newProductFrom, setNewProductForm] = useState({});
   const [editProductForm, setEditProductForm] = useState({});
   const [basicModal, setBasicModal] = useState(false);
-  const toggleShowEdit = (id) => setBasicModal(!basicModal);
+  const toggleShowEdit = (_id) => setBasicModal(!basicModal);
   
   const handleBackPage = () => {
     navigate("/homeemployee");
   };
+
+  const editSubmit = (_id, e) => {
+    // e.preventDefault()
+    confirmAlert({
+      title: `Modifica`,
+      message: `Vuoi modificare il prodotto ${_id}?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => editProduct(_id, e) 
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No')
+        }
+      ]
+    });
+  }
+
+
 
   const editProduct = async (_id, e) => {
     const editProduct = {
@@ -88,16 +110,35 @@ const ManageProductsList = () => {
   console.log(data);
 
   const deleteProduct = (_id, e) => {
-    e.preventDefault();
+    // e.preventDefault();
     axios.delete(`http://localhost:7070/allproducts/${_id}`).then((response) => {
       if (response.status === 200) {
-        window.confirm(`Rimuovere ${_id}?`);
+        // window.confirm(`Rimuovere ${_id}?`);
         navigate("/manageproducts");
         window.location.reload(true);
       }
     });
   };
 
+
+  const deleteSubmit = (_id, e) => {
+    e.preventDefault()
+    confirmAlert({
+      title: `Elimina`,
+      message: 'Vuoi eliminare il prodotto?',
+      className: "text-primary",
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => deleteProduct(_id, e) 
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No')
+        }
+      ]
+    });
+  }
 
   return (
     <>
@@ -344,7 +385,7 @@ const ManageProductsList = () => {
       </MDBModal>
                     <td>
                       <MDBBtn
-                        onClick={(e) => deleteProduct(product._id, e)}
+                        onClick={(e) =>deleteSubmit(product._id, e)}
                         color="danger"
                         rounded
                         size="sm"
