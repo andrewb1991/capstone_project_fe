@@ -23,7 +23,9 @@ import useSessionHook from "../utils/useSessionHook";
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
   const navigate = useNavigate();
-  const session = JSON.parse(localStorage.getItem("authCode"))
+  const user = useSessionHook()
+  console.log(user)
+
   const navigateHome = async (e) => {
     return navigate("/home");
   };
@@ -43,7 +45,7 @@ export default function App() {
 //   };
 
   return (
-    
+
     <MDBNavbar expand="lg" light bgColor="light" className="sticky-top">
       <MDBContainer fluid>
         <MDBNavbarBrand>
@@ -91,7 +93,7 @@ export default function App() {
           </MDBNavbarNav>
           <MDBDropdown>
                 <MDBDropdownToggle tag="a" className="nav-link" role="button">
-                  Account
+                  {user && <div>Ciao, {user.name} {user.surname}</div>}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Visualizza Account</MDBDropdownItem>
