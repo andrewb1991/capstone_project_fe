@@ -28,6 +28,7 @@ const Login = () => {
   const [authenticated, setAuthenticated] = useState(null);
   const navigate = useNavigate();
 
+
   const handleChange = useCallback((value) => {
     setText(value);
   });
@@ -65,6 +66,7 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("authCode", response.data.token);
+          console.log(response.data)
           alert("Login!")
           navigate("/home");
         }
@@ -107,6 +109,25 @@ const Login = () => {
 
   return (
     <>
+    <div className="relative h-96 overflow-hidden bg-cover bg-no-repeat p-12 text-center lg:h-screen">
+        <header style={{ paddingLeft: 0 }} className="w-full">
+      
+
+      <div
+        className='p-5 text-center bg-image'
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832467/backgroundimage_mfn9bd.avif')", height: 400 }}
+      >
+        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className='d-flex justify-content-center align-items-center h-100'>
+            <div className='text-white'>
+              <h1 className=''>Welcome to <img className="w-25 h-25"src="https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832196/white_logo_transparent_background_fwo0ia.png"></img></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    </div>
+
       <MDBContainer className="p-3 my-5 d-flex flex-column w-50 mt-64">
         <MDBTabs
           pills
@@ -142,6 +163,7 @@ const Login = () => {
         <MDBTabsContent>
           <MDBTabsPane show={justifyActive === "tab1"}>
             <div className="text-center mb-3">
+              Accedi con le tue credenziali
               <div
                 className="d-flex justify-content-between mx-auto"
                 style={{ width: "40%" }}

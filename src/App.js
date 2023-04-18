@@ -7,8 +7,6 @@ import {
   Route,
   Link 
 } from "react-router-dom"
-
-
 import ProductsList from './views/products/ProductsList';
 import NavbarPage from './views/NavBar';
 import EmployeesList from './views/employees/EmployeesList';
