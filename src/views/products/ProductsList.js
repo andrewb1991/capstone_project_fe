@@ -17,7 +17,8 @@ import axios from "axios";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
-const session = localStorage.getItem("authCode")
+import jwt_decode from 'jwt-decode';
+const session = JSON.parse(localStorage.getItem("authCode"))
 
 function ProductsList() {
   const [search, setSearch] = useState("");
@@ -26,16 +27,12 @@ function ProductsList() {
   const limit = 8;
 
   const { data, loading, error } = useFetch(`http://localhost:7070/allproductspagination?page=${page}&limit=${limit}`);
-  console.log(data);
 
-  // const searchProducts = () =>{
-  // axios.get("http://localhost:7070/allproducts")
-  // }
 
   useEffect(()=>{
   if(session){
-   const auth =  localStorage.getItem("authCode")
-   console.log(session)
+    const user = jwt_decode(session)
+   console.log(user)
   }
   }, [])
 

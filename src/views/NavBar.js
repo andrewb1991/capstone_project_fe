@@ -17,11 +17,13 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import axios from "axios";
+import useSessionHook from "../utils/useSessionHook";
+
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
   const navigate = useNavigate();
-
+  const session = JSON.parse(localStorage.getItem("authCode"))
   const navigateHome = async (e) => {
     return navigate("/home");
   };
@@ -41,6 +43,7 @@ export default function App() {
 //   };
 
   return (
+    
     <MDBNavbar expand="lg" light bgColor="light" className="sticky-top">
       <MDBContainer fluid>
         <MDBNavbarBrand>

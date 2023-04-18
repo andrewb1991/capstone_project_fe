@@ -17,7 +17,7 @@ import {
   MDBFile
 } from "mdb-react-ui-kit";
 import jwt_decode from "jwt-decode";
-import jwtDecode from "jwt-decode";
+import useSessionHook from "../utils/useSessionHook";
 
 const Login = () => {
   const [text, setText] = useState("");
@@ -27,6 +27,9 @@ const Login = () => {
   const [formEmpl, setFormEmpl] = useState({});
   const [authenticated, setAuthenticated] = useState(null);
   const navigate = useNavigate();
+  const user = useSessionHook()
+  console.log(user)
+
 
 
   const handleChange = useCallback((value) => {
@@ -57,6 +60,8 @@ const Login = () => {
   const Customer = {
     email: formLogin.email,
     password: formLogin.password,
+    name: "",
+    surname: ""
   };
 
   const loginUser = async (e) => {
@@ -65,7 +70,7 @@ const Login = () => {
       .post(`http://localhost:7070/login`, Customer)
       .then((response) => {
         if (response.status === 200) {
-          localStorage.setItem("authCode", response.data.token);
+          localStorage.setItem("authCode", JSON.stringify(jwt_decode(response.data)));
           console.log(response.data)
           alert("Login!")
           navigate("/home");
@@ -87,9 +92,9 @@ const Login = () => {
   .post("http://localhost:7070/auth/employees", Employee)
   .then((response)=>{
   if(response.status === 200){
-  localStorage.setItem("emplCode", response.data.token);
-  alert("Login Employee")
-  navigate("/homeemployee")
+    localStorage.setItem("emplCode", JSON.stringify(jwt_decode(response.data)));  
+    alert("Login Employee")
+    navigate("/homeemployee")
   }
   else{
   return alert("Invalid Credential")
@@ -115,7 +120,7 @@ const Login = () => {
 
       <div
         className='p-5 text-center bg-image'
-        style={{ backgroundImage: "url('https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832467/backgroundimage_mfn9bd.avif')", height: 400 }}
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832467/backgroundimage_mfn9bd.avif')", height: 280 }}
       >
         <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
           <div className='d-flex justify-content-center align-items-center h-100'>

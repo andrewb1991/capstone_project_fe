@@ -25,6 +25,9 @@ const HomeEmployee = () => {
       const handleProductPage =  () =>{
         navigate("/manageproducts")
        }
+      const handleHomePage = () => {
+      navigate("/")
+      }
     
 
   return (
@@ -35,6 +38,9 @@ const HomeEmployee = () => {
       </MDBBtn>
       <MDBBtn onClick={handleEmployesPage} className='m-1 btn-lg text-center' color='success'>
         GESTIONE DIPENDENTI
+      </MDBBtn>
+      <MDBBtn onClick={handleHomePage} className='m-1 btn-lg text-center' color='danger'>
+        ESCI
       </MDBBtn>
       </MDBContainer>
     </div>
