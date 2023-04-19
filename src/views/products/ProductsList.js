@@ -20,7 +20,7 @@ import { SingleProduct } from "./SingleProduct";
 import jwt_decode from 'jwt-decode';
 const session = JSON.parse(localStorage.getItem("authCode"))
 
-function ProductsList() {
+function ProductsList(handleClick, props) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
@@ -79,7 +79,7 @@ const handleNext = () => {
          : item.product.toLowerCase().includes(search); 
   })
   .map((post, i) => (
-    <SingleProduct key={post.id}{...post}/>
+    <SingleProduct item={post} key={post.id}{...post} handleClick={handleClick}/>
   ))}               
    
                         </MDBRow>

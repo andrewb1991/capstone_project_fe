@@ -15,14 +15,14 @@ import {
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-export const SingleProduct = (props) => {
+export const SingleProduct = (props,item, handleClick) => {
   const { product, thumbnail, description, category, price } = props;
   return (
     <MDBCol md="6" lg="3" className="mb-4">
       <MDBCard className="h-100">
         <MDBRipple
           rippleColor="light"
-          rippleTag="div"
+          // rippleTag="div"
           className="bg-image rounded hover-zoom"
         >
           <MDBCardBody>
@@ -30,7 +30,6 @@ export const SingleProduct = (props) => {
             <h5 className="card-title mb-3">{product}</h5>
             <p>{category}</p>
             <h6 className="mb-3">{price} €</h6>
-            <MDBBtn color='warning'>Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
             {/* <h6 className="mb-3">{description}</h6> */}
           </MDBCardBody>
           <div className="mask">
@@ -47,6 +46,8 @@ export const SingleProduct = (props) => {
           </div>
         </MDBRipple>
       </MDBCard>
+      <MDBBtn onClick={()=>handleClick(item)} color='warning'>Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
+
     </MDBCol>
   );
 };
