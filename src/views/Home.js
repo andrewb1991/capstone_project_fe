@@ -18,6 +18,7 @@ import {
 } from "mdb-react-ui-kit";
 import jwt_decode from "jwt-decode";
 import useSessionHook from "../utils/useSessionHook";
+import jwtDecode from "jwt-decode";
 
 const Login = () => {
   const [text, setText] = useState("");
@@ -70,7 +71,7 @@ const Login = () => {
       .post(`http://localhost:7070/login`, Customer)
       .then((response) => {
         if (response.status === 200) {
-          localStorage.setItem("authCode", JSON.stringify(jwt_decode(response.data)));
+          localStorage.setItem("authCode", JSON.stringify(jwtDecode(response.data)));
           console.log(response.data)
           alert("Login!")
           navigate("/home");
@@ -92,7 +93,7 @@ const Login = () => {
   .post("http://localhost:7070/auth/employees", Employee)
   .then((response)=>{
   if(response.status === 200){
-    localStorage.setItem("emplCode", JSON.stringify(jwt_decode(response.data)));  
+    localStorage.setItem("emplCode", JSON.stringify(jwtDecode(response.data)));  
     alert("Login Employee")
     navigate("/homeemployee")
   }
@@ -267,7 +268,7 @@ const Login = () => {
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  password: e.target.value,
+                  imageprofile: e.target.value,
                 })
               }
               label="Image Profile"

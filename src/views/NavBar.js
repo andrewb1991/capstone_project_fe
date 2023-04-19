@@ -30,34 +30,28 @@ export default function App() {
     return navigate("/home");
   };
 
-//   const smartphoneFilter = async (e) => {
-//     e.preventDefault();
-//     await axios
-//       .get("http://localhost:8080/allproducts/Smartphone")
-//       .then((response) => {
-//         if (response.status === 200) {
-//           navigate("/home");
-//         }
-//         else{
-// return console.log(e)        
-// }
-//       });
-//   };
+  const handleClickHome = async (e) =>{
+  alert("Sei sicuro di voler tornare alla pagina iniziale?")
+  if(alert === true){
+  navigate("")
+  }
+  }
+
 
   return (
 
     <MDBNavbar expand="lg" light bgColor="light" className="sticky-top">
       <MDBContainer fluid>
         <MDBNavbarBrand>
-          <a href="/home">
+          {/* <a href="/"> */}
             {" "}
-            <img
+            <img onClick={handleClickHome}
               className="img-thumbnail"
               width={60}
               height={80}
               src="https://res.cloudinary.com/dpb7beo1e/image/upload/v1681290732/logo_transparent_background_rjoa2g.png"
             ></img>
-          </a>
+          {/* </a> */}
         </MDBNavbarBrand>
 
         <MDBNavbarToggler
@@ -93,7 +87,13 @@ export default function App() {
           </MDBNavbarNav>
           <MDBDropdown>
                 <MDBDropdownToggle tag="a" className="nav-link" role="button">
-                  {user && <div>Ciao, {user.name} {user.surname}</div>}
+                  {user && <div>Ciao, {user.name} {user.surname}
+                  <img
+              className="img-thumbnail img-fluid rounded"
+              width={60}
+              height={60}
+              src={user.imageprofile}
+            ></img></div>}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Visualizza Account</MDBDropdownItem>
