@@ -18,6 +18,7 @@ import {
 } from "mdb-react-ui-kit";
 import jwt_decode from "jwt-decode";
 import useSessionHook from "../utils/useSessionHook";
+import useSessionHookEmpl from "../utils/useSessionHookEmpl";
 import jwtDecode from "jwt-decode";
 
 const Login = () => {
@@ -30,7 +31,8 @@ const Login = () => {
   const navigate = useNavigate();
   const user = useSessionHook()
   console.log(user)
-
+  const employee = useSessionHookEmpl()
+console.log(employee)
 
 
   const handleChange = useCallback((value) => {
@@ -94,6 +96,7 @@ const Login = () => {
   .then((response)=>{
   if(response.status === 200){
     localStorage.setItem("emplCode", JSON.stringify(jwtDecode(response.data)));  
+    console.log(response.data)
     alert("Login Employee")
     navigate("/homeemployee")
   }
@@ -325,29 +328,3 @@ const Login = () => {
 };
 
 export default Login;
-
-// import {useState} from "react";
-
-// export const FormComponent = ()=>{
-
-//     const submit = async (e)=>{
-//         e.preventDefault();
-
-//         let data = new FormData();
-//         data.append('uploadImage', e.target[0].files[0]) //il primo parametro è il name che usereme nel metodo single di multer
-
-//         let res = await fetch("http://localhost:4040/BlogPosts/640f71e3bea275c3f3b27013/author/avatar/", {
-//             method: 'POST',
-//             body: data
-//         }).then(res=>res.json())
-//         console.log("RESPONSE", res);
-//         setSrc(res.upload);
-//         //aggiungere dati al backend
-//     }
-//     return (<form onSubmit={submit} enctype="multipart/form-data">
-//         <input type="file" name="uploadImage" />
-//         <button type="submit">Invia</button>
-
-//         <img src={src} />
-//     </form>)
-// }

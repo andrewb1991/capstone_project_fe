@@ -38,14 +38,15 @@ const ManageProductsList = () => {
   const handleBackPage = () => {
     navigate("/homeemployee");
   };
-  const toggleShowEdit = (_id) => {
+  const toggleShowEdit = () => {
     setBasicModal(!basicModal);
   }
 
-  const editSubmit = (_id, e) => {
+  const editSubmit = (_id) => {
     confirmAlert({
       title: `Modifica`,
-      message: `Vuoi modificare il prodotto ${_id}?`,
+      message: `Vuoi modificare il prodotto ${_id})`,
+      className: "text-primary",
       buttons: [
         {
           label: 'Yes',
@@ -56,12 +57,12 @@ const ManageProductsList = () => {
           onClick: () => alert('Click No')
         }
       ]
-    })
-  }
+    });    }
+  
 
 
 
-  const editProduct = async (_id, e) => {
+  const editProduct = async (_id) => {
 
     const editProduct = {
       product: newProductFrom.product,
@@ -70,9 +71,8 @@ const ManageProductsList = () => {
       price: newProductFrom.price,
       description: newProductFrom.description,
     };
-    e.preventDefault();
     await axios
-      .put(`http://localhost:7070/allproducts/${_id}`, editProduct)
+      .patch(`http://localhost:7070/allproducts/${_id}`, editProduct)
       .then((response) => {
         if (response.status === 200) {
           window.confirm(`Modificare il prodotto ${_id}`);
@@ -127,7 +127,7 @@ const ManageProductsList = () => {
     e.preventDefault()
     confirmAlert({
       title: `Elimina`,
-      message: 'Vuoi eliminare il prodotto?',
+      message: `Vuoi eliminare il prodotto ${_id}?`,
       className: "text-primary",
       buttons: [
         {
@@ -297,7 +297,7 @@ const ManageProductsList = () => {
                       <p className="fw-normal mb-1">{product.price} €</p>
                     </td>
                     <td>
-                      <MDBBtn onClick={toggleShowEdit} color="primary" rounded size="sm">
+                      <MDBBtn onClick={editSubmit} color="primary" rounded size="sm">
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
@@ -377,10 +377,10 @@ const ManageProductsList = () => {
               </form></MDBModalBody>
 
             <MDBModalFooter>
-              <MDBBtn color='secondary' onClick={toggleShowEdit}>
+              <MDBBtn color='secondary'>
                 Close
               </MDBBtn>
-              <MDBBtn>Save changes</MDBBtn>
+              <MDBBtn onClick={(e)=> editProduct(product._id)}>Save changes</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>

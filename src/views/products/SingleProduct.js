@@ -45,8 +45,9 @@ export const SingleProduct = (props,item, handleClick) => {
             ></div>
           </div>
         </MDBRipple>
+        <MDBBtn onClick={()=>handleClick(item)} color='warning'>Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
+
       </MDBCard>
-      <MDBBtn onClick={()=>handleClick(item)} color='warning'>Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
 
     </MDBCol>
   );
