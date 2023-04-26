@@ -25,7 +25,7 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ProductEditModal from "./ProductEditModal";
+// import ProductEditModal from "./ProductEditModal";
 
 const ManageProductsList = () => {
   const navigate = useNavigate();
@@ -42,7 +42,8 @@ const ManageProductsList = () => {
     setBasicModal(!basicModal);
   }
 
-  const editSubmit = (_id) => {
+  const editSubmit = (_id, e) => {
+    e.preventDefault();
     confirmAlert({
       title: `Modifica`,
       message: `Vuoi modificare il prodotto ${_id})`,
@@ -50,7 +51,8 @@ const ManageProductsList = () => {
       buttons: [
         {
           label: 'Yes',
-          onClick: () => toggleShowEdit(_id) 
+          onClick: () => toggleShowEdit(_id)
+          // onClick: () => toggleShowEdit() 
         },
         {
           label: 'No',
@@ -65,11 +67,11 @@ const ManageProductsList = () => {
   const editProduct = async (_id) => {
 
     const editProduct = {
-      product: newProductFrom.product,
-      thumbnail: newProductFrom.thumbnail,
-      category: newProductFrom.category,
-      price: newProductFrom.price,
-      description: newProductFrom.description,
+      product: editProductForm.product,
+      thumbnail: editProductForm.thumbnail,
+      category: editProductForm.category,
+      price: editProductForm.price,
+      description: editProductForm.description,
     };
     await axios
       .patch(`http://localhost:7070/allproducts/${_id}`, editProduct)
@@ -297,7 +299,9 @@ const ManageProductsList = () => {
                       <p className="fw-normal mb-1">{product.price} €</p>
                     </td>
                     <td>
-                      <MDBBtn onClick={editSubmit} color="primary" rounded size="sm">
+                      <MDBBtn onClick={(e, _id) => {
+    toggleShowEdit(_id);
+  }} color="primary" rounded size="sm">
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>

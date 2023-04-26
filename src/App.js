@@ -12,36 +12,37 @@ import NavbarPage from "./views/NavBar";
 import EmployeesList from "./views/employees/EmployeesList";
 import ManageProductsList from "./views/products/ManageProductsList";
 import HomeEmployee from "./views/employees/HomeEmployee";
-import ProductEditModal from "./views/products/ProductEditModal";
 import { useState } from "react";
 import { SingleProduct } from "./views/products/SingleProduct";
+import ProductEditPage from "./views/products/ProductEditPage";
+import { CartProvider } from "react-use-cart";
+import Cart from "./views/cart/Cart";
 
 function App() {
   const location = useLocation();
-  const [show, setShow] = useState(true)
-  const [cart, setCart] = useState([])
-  const handleClick = (item) => {
-  console.log(item)
-  }
+
   return (
     <>
       <div className="App">
-      {location.pathname === "/home" ? <NavbarPage size={cart.length}/> : null}
+        {location.pathname === "/home" ? (
+          <NavbarPage/>
+        ) : null}
+        <CartProvider>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/homeemployee" element={<HomeEmployee/>} />
+          <Route element={<Cart/>}/>
+          <Route path="/homeemployee" element={<HomeEmployee />} />
           <Route path="/manageemployess" element={<EmployeesList />} />
           <Route
             path="/manageproducts"
             exact
             element={<ManageProductsList />}
           />
-          <Route path="/editproduct" element={<ProductEditModal />} />
-          <Route path="/home" element={<ProductsList handleClick={handleClick} />} />
-          <Route element={          <SingleProduct/>
-}/>
+          <Route path="/editproduct" element={<ProductEditPage />} />
+          <Route path="/home" element={<ProductsList />} />
+          <Route element={<SingleProduct />} />
         </Routes>
-       
+        </CartProvider>
       </div>
     </>
   );

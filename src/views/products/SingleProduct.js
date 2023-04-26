@@ -12,11 +12,11 @@ import {
   MDBBtn,
   MDBRipple,
 } from "mdb-react-ui-kit";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import { useCart } from "react-use-cart";
 
-export const SingleProduct = (props,item, handleClick) => {
-  const { product, thumbnail, description, category, price } = props;
+export const SingleProduct = (props) => {
+  const { product, thumbnail, description, category, price, item, _id, id } = props;
+  const {addItem} = useCart();
   return (
     <MDBCol md="6" lg="3" className="mb-4">
       <MDBCard className="h-100">
@@ -45,7 +45,7 @@ export const SingleProduct = (props,item, handleClick) => {
             ></div>
           </div>
         </MDBRipple>
-        <MDBBtn onClick={()=>handleClick(item)} color='warning'>Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
+        <MDBBtn color='warning' className="m-3" onClick={()=>{addItem(item)}} >Aggiungi <i class="fa-solid fa-cart-shopping fa-xl"></i></MDBBtn>
 
       </MDBCard>
 

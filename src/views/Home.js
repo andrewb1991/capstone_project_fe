@@ -96,12 +96,11 @@ console.log(employee)
   .then((response)=>{
   if(response.status === 200){
     localStorage.setItem("emplCode", JSON.stringify(jwtDecode(response.data)));  
-    console.log(response.data)
     alert("Login Employee")
     navigate("/homeemployee")
   }
   else{
-  return alert("Invalid Credential")
+  alert("Invalid Credential")
   }
   })
   }

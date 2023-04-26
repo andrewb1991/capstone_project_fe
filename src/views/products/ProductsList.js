@@ -18,6 +18,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
 import jwt_decode from 'jwt-decode';
+import Cart from "../cart/Cart";
 const session = JSON.parse(localStorage.getItem("authCode"))
 
 function ProductsList(handleClick, props) {
@@ -60,7 +61,10 @@ const handleNext = () => {
     {loading && <h1>Loading Products...</h1>}
 
                 <MDBContainer fluid className="my-5 text-center">
-
+                <div className="">
+                        <Cart/>
+                <i className="fa fa-cart-plus fa-xl" />
+                        </div>
                 <MDBRow>
                 <h4 className="mt-4 mb-5">
                       <strong>Smartphone, Tablet e Accessori</strong>
@@ -78,8 +82,8 @@ const handleNext = () => {
          ? item
          : item.product.toLowerCase().includes(search); 
   })
-  .map((post, i) => (
-    <SingleProduct item={post} key={post.id}{...post} handleClick={handleClick}/>
+  .map((post, item) => (
+    <SingleProduct item={post} key={item}{...post}/>
   ))}               
    
                         </MDBRow>

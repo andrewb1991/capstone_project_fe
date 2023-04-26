@@ -19,6 +19,7 @@ import {
 } from "mdb-react-ui-kit";
 import axios from "axios";
 import useSessionHook from "../utils/useSessionHook";
+import Cart from "./cart/Cart";
 
 export default function App({ size }) {
   const [showBasic, setShowBasic] = useState(false);
@@ -84,13 +85,19 @@ export default function App({ size }) {
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink className="position-relative d-inline-block" active aria-current="page" href="#">
-                {/* Carrello */}
-                <i className="fa fa-cart-plus fa-xl"/>
-                <MDBBadge className='position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle' color='danger'>
-        {size}
-      </MDBBadge>
-
+              <MDBNavbarLink
+                className="position-relative d-inline-block"
+                active
+                aria-current="page"
+                href="#"
+              >
+                
+                <MDBBadge
+                  className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"
+                  color="danger"
+                >
+                  {size}
+                </MDBBadge>
               </MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>

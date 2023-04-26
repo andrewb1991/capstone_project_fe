@@ -36,19 +36,19 @@ const HomeEmployee = () => {
 
   return (
 
-    <><NavBarEmpl /><div className="w-100 h-100 mt-5 d-flex align-content-center">
-      {employee && (
-        <div className="m-2 d-flex flex-row align-content-between">
+    <div className="w-100 h-100 mt-5 d-flex align-content-center flex-column">
+
+      <MDBContainer className="my-5 d-flex flex-column w-50">
+        <div className="m-2 d-flex flex-column justify-content-between">
           {employee && (
-            <div className="m-2 d-flex flex-row align-content-between">
-              <h1>
+          <>
+              <h1 className="text-primary">
                 Ciao, {employee.name} {employee.surname}
               </h1>
-            </div>
+              <h5 className="text-dark">scegli un opzione per continuare</h5>
+              </>
           )}
         </div>
-      )}
-      <MDBContainer className="my-5 d-flex w-50">
 
         <MDBBtn onClick={handleProductPage} className='m-1 btn-lg text-center' color='warning'>
           GESTIONE PRODOTTI
@@ -60,7 +60,7 @@ const HomeEmployee = () => {
           ESCI
         </MDBBtn>
       </MDBContainer>
-    </div></>
+    </div>
   );
 };
 
