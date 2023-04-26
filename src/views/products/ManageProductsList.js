@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router";
 import { confirmAlert } from 'react-confirm-alert';
+import { Link } from "react-router-dom";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import {
   MDBBadge,
@@ -27,7 +28,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import ProductEditModal from "./ProductEditModal";
 
-const ManageProductsList = () => {
+const ManageProductsList = (props) => {
+  const {_id} =useParams()
   const navigate = useNavigate();
   const [fullscreenXlModal, setFullscreenXlModal] = useState(false);
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
@@ -43,26 +45,27 @@ const ManageProductsList = () => {
   }
 
   const editSubmit = (_id, e) => {
-    e.preventDefault();
+    }
+  
+
+    const navigateEdit = async (e, id) =>{
+      e.preventDefault();
     confirmAlert({
       title: `Modifica`,
-      message: `Vuoi modificare il prodotto ${_id})`,
+      message: `Vuoi modificare il prodotto ${id})`,
       className: "text-primary",
       buttons: [
         {
           label: 'Yes',
-          onClick: () => toggleShowEdit(_id)
-          // onClick: () => toggleShowEdit() 
+          onClick: () => navigate(`/editproduct`) 
         },
         {
           label: 'No',
           onClick: () => alert('Click No')
         }
       ]
-    });    }
-  
-
-
+    });    
+      }
 
   const editProduct = async (_id) => {
 
@@ -299,96 +302,11 @@ const ManageProductsList = () => {
                       <p className="fw-normal mb-1">{product.price} €</p>
                     </td>
                     <td>
-                      <MDBBtn onClick={(e, _id) => {
-    toggleShowEdit(_id);
-  }} color="primary" rounded size="sm">
+                      <MDBBtn onClick={navigateEdit} color="primary" rounded size="sm">
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
-      <MDBModal show={basicModal} setShow={setBasicModal} tabIndex='-1'>
-        <MDBModalDialog>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>Modifica {product.product}</MDBModalTitle>
-              <MDBBtn className='btn-close' color='none'></MDBBtn>
-            </MDBModalHeader>
-            <MDBModalBody><form>
-                <MDBInput onChange={(e) =>
-                    setEditProductForm({
-                      ...editProductForm,
-                      product: e.target.value,
-                    })
-                  }
-                  className="text-primary"
-                  wrapperClass="mb-4"
-                  id="form6Example3"
-                  label="Prodotto"
-                  name="product"
-                />
-                <MDBInput onChange={(e) =>
-                    setEditProductForm({
-                      ...editProductForm,
-                      thumbnail: e.target.value,
-                    })
-                  }
-                  wrapperClass="mb-4"
-                  id="typeURL"
-                  type="url"
-                  label="URL Immagine"
-                  name="thumbnail"
-                />
-                <MDBInput onChange={(e) =>
-                    setEditProductForm({
-                      ...editProductForm,
-                      category: e.target.value,
-                    })
-                  }
-                  className="text-primary"
-                  wrapperClass="mb-4"
-                  type="email"
-                  id="form6Example5"
-                  label="Categoria"
-                  name="category"
-                />
-                <MDBInput onChange={(e) =>
-                    setEditProductForm({
-                      ...editProductForm,
-                      price: e.target.value,
-                    })
-                  }
-                  className="text-primary"
-                  wrapperClass="mb-4"
-                  type="tel"
-                  id="form6Example6"
-                  label="Prezzo"
-                  name="price"
-                />
-
-                <MDBInput onChange={(e) =>
-                    setEditProductForm({
-                      ...editProductForm,
-                      description: e.target.value,
-                    })
-                  }
-                  className="text-primary"
-                  wrapperClass="mb-4"
-                  textarea
-                  id="form6Example7"
-                  rows={4}
-                  label="Aggiungi una descrizione"
-                  name="description"
-                />
-              </form></MDBModalBody>
-
-            <MDBModalFooter>
-              <MDBBtn color='secondary'>
-                Close
-              </MDBBtn>
-              <MDBBtn onClick={(e)=> editProduct(product._id)}>Save changes</MDBBtn>
-            </MDBModalFooter>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
+      
                     <td>
                       <MDBBtn
                         onClick={(e) =>deleteSubmit(product._id, e)}

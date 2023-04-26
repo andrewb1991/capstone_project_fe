@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { Button } from "react-bootstrap";
 import {
   MDBContainer,
   MDBNavbar,
@@ -20,27 +21,40 @@ import {
 import axios from "axios";
 import useSessionHook from "../utils/useSessionHook";
 import useFetch from "./products/useFetch";
+import Cart from "./cart/Cart";
 
 export default function App({ size }) {
   const [showBasic, setShowBasic] = useState(false);
-  const navigate = useNavigate();
   const user = useSessionHook();
   console.log(user);
 
-  const navigateHome = async (e) => {
-    return navigate("/home");
-  };
+  const navigate = useNavigate()
+
+  const navigateSmartphone = async (e) => {
+      return navigate("/smartphone");
+    };
+    
+    const navigateAccessori = async (e) =>{
+    return navigate("/accessori")
+    }
+    
+    const navigateTablet = async (e) =>{
+      return navigate("/tablet")
+      }
+      const navigateHome = async (e) =>{
+          return navigate("/home")
+          }
+
+  const navigateCart = async(e) =>{
+  return navigate(<Cart/>)
+  }
 
   const handleClickHome = async (e) => {
     alert("Sei sicuro di voler tornare alla pagina iniziale?");
     if (alert === true) {
-      navigate("");
+      navigate("/home");
     }
   };
-
-  const {smartphone} = useFetch(`http://localhost:7070/Smartphone`)
-  const {accessori} = useFetch(`http://localhost:7070/Accessori`)
-  const {tablet} = useFetch(`http://localhost:7070/Tablet`)
 
 
   return (
@@ -69,24 +83,26 @@ export default function App({ size }) {
 
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-            <MDBNavbarItem>
+          <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page" href="#">
-                Smartphone
+                <Button className="btn btn-primary m-2" onClick={navigateHome}>Tutti</Button>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page" href="#">
-                Tablet
+                <Button className="btn btn-danger m-2" onClick={navigateSmartphone}>Smartphone</Button>
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page" href="#">
-                Accessori
+                <Button className="btn btn-success m-2" onClick={navigateTablet}>Tablet</Button>
+
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink active aria-current="page" href="#">
-                Ordini
+                <Button className="btn btn-info m-2" onClick={navigateAccessori}>Accessori</Button>
+
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>

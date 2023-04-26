@@ -30,13 +30,22 @@ function App() {
         {location.pathname === "/home" ? (
           <NavbarPage/>
         ) : null}
+                {location.pathname === "/smartphone" ? (
+          <NavbarPage/>
+        ) : null}
+                {location.pathname === "/tablet" ? (
+          <NavbarPage/>
+        ) : null}
+                {location.pathname === "/accessori" ? (
+          <NavbarPage/>
+        ) : null}
         <CartProvider>
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/smartphone" element={<SmartphoneList/>}/>
           <Route path="/accessori" element={<AccessoriList/>}/>
           <Route path="/tablet" element={<TabletList/>}/>
-          <Route element={<Cart/>}/>
+          <Route id="cart" element={<Cart/>}/>
           <Route path="/homeemployee" element={<HomeEmployee />} />
           <Route path="/manageemployess" element={<EmployeesList />} />
           <Route
@@ -44,7 +53,7 @@ function App() {
             exact
             element={<ManageProductsList />}
           />
-          <Route path="/editproduct" element={<ProductEditPage />} />
+          {/* <Route path=`/editproduct/${}` element={<ProductEditPage />} /> */}
           <Route path="/home" element={<ProductsList />} />
           <Route element={<SingleProduct />} />
         </Routes>

@@ -58,20 +58,6 @@ const handleNext = () => {
 };
 const navigate = useNavigate()
 
-const navigateSmartphone = async (e) => {
-    return navigate("/smartphone");
-  };
-  
-  const navigateAccessori = async (e) =>{
-  return navigate("/accessori")
-  }
-  
-  const navigateTablet = async (e) =>{
-    return navigate("/tablet")
-    }
-    const navigateHome = async (e) =>{
-        return navigate("/home")
-        }
   return (
     <>
     {loading && <h1>Loading Products...</h1>}
@@ -79,15 +65,8 @@ const navigateSmartphone = async (e) => {
                 <MDBContainer fluid className="my-5 text-center">
                 <MDBRow>
                 <h4 className="mt-4 mb-5">
-                      <strong>Smartphone, Tablet e Accessori</strong>
+                      <strong>Smartphone</strong>
                     </h4>
-                    <h3>Filtra i prodotti per categoria:</h3>
-                    <div>
-                    <Button className="btn btn-warning m-2" onClick={navigateSmartphone}>Smartphone</Button>
-                    <Button className="btn btn-info m-2" onClick={navigateAccessori}>Accessori</Button>
-                    <Button className="btn btn-success m-2" onClick={navigateTablet}>Tablet</Button>
-                    <Button className="btn btn-primary m-2" onClick={navigateHome}>Tutti</Button>
-                    </div>
                     <Form>
           <InputGroup className='my-3'>
             <Form.Control
