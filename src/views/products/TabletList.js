@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import useFetch from "./useFetch";
-import Pagination from 'react-bootstrap/Pagination';
 import { useNavigate } from "react-router";
+import Pagination from 'react-bootstrap/Pagination';
+import { Button } from "react-bootstrap";
 import {
   MDBContainer,
   MDBRow,
@@ -20,18 +21,17 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
 import jwt_decode from 'jwt-decode';
 import Cart from "../cart/Cart";
-import { Button } from "react-bootstrap";
 const session = JSON.parse(localStorage.getItem("authCode"))
 
-function ProductsList(handleClick, props) {
+function TabletList(handleClick, props) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const limit = 8;
 
-  const { data, loading, error } = useFetch(`http://localhost:7070/allproductspagination?page=${page}&limit=${limit}`);
-  const navigate = useNavigate();
+  const { data, loading, error } = useFetch(`http://localhost:7070/Tablet`);
 
+  
   useEffect(()=>{
   if(session){
     const user = jwt_decode(session)
@@ -58,21 +58,23 @@ const handleNext = () => {
   });
 };
 
+const navigate = useNavigate();
+
 const navigateSmartphone = async (e) => {
-  return navigate("/smartphone");
-};
-
-const navigateAccessori = async (e) =>{
-return navigate("/accessori")
-}
-
-const navigateTablet = async (e) =>{
-  return navigate("/tablet")
+    return navigate("/smartphone");
+  };
+  
+  const navigateAccessori = async (e) =>{
+  return navigate("/accessori")
   }
-
-  const navigateHome = async (e) =>{
-    return navigate("/home")
+  
+  const navigateTablet = async (e) =>{
+    return navigate("/tablet")
     }
+  
+    const navigateHome = async (e) =>{
+      return navigate("/home")
+      }
   return (
     <>
     {loading && <h1>Loading Products...</h1>}
@@ -88,8 +90,8 @@ const navigateTablet = async (e) =>{
                     <Button className="btn btn-info m-2" onClick={navigateAccessori}>Accessori</Button>
                     <Button className="btn btn-success m-2" onClick={navigateTablet}>Tablet</Button>
                     <Button className="btn btn-primary m-2" onClick={navigateHome}>Tutti</Button>
-
                     </div>
+
                     <Form>
           <InputGroup className='my-3'>
             <Form.Control
@@ -124,4 +126,4 @@ const navigateTablet = async (e) =>{
                       </MDBContainer>
                       </>
               )}
-export default ProductsList;
+export default TabletList;

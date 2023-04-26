@@ -19,7 +19,7 @@ import {
 } from "mdb-react-ui-kit";
 import axios from "axios";
 import useSessionHook from "../utils/useSessionHook";
-import Cart from "./cart/Cart";
+import useFetch from "./products/useFetch";
 
 export default function App({ size }) {
   const [showBasic, setShowBasic] = useState(false);
@@ -37,6 +37,11 @@ export default function App({ size }) {
       navigate("");
     }
   };
+
+  const {smartphone} = useFetch(`http://localhost:7070/Smartphone`)
+  const {accessori} = useFetch(`http://localhost:7070/Accessori`)
+  const {tablet} = useFetch(`http://localhost:7070/Tablet`)
+
 
   return (
     <MDBNavbar expand="lg" light bgColor="light" className="sticky-top">

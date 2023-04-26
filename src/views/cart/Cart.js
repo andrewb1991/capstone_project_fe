@@ -12,15 +12,18 @@ const Cart = () => {
     removeItem,
     emptyCart,
   } = useCart();
+  console.log(cartTotal)
   if (isEmpty) return <h6 className="text-center">Il carrello è vuoto</h6>;
   return (
     <>
       <section className="py-4 container">
         <div className="row justify-content-center">
           <div className="col-12">
-            <h4>Carrello:</h4>
+            <h3>
+            <strong>Carrello  <i class="fa-solid fa-cart-shopping fa-xl"></i></strong>
+            </h3>
             <h6>
-            <i class="fa-solid fa-cart-shopping fa-xl"></i>             Prodotti: {totalItems}, Totale: {totalUniqueItems} 
+           Prodotti: {totalItems}, Totale: {totalUniqueItems} 
             </h6>
             <table className="table table-light table-hover m-0">
               <tbody>
@@ -35,7 +38,7 @@ const Cart = () => {
                           />
                         </td>
                         <td>{items.product}</td>
-                        <td>{parseFloat(items.price)}</td>
+                        <td>{items.price}</td>
                         <td>Quantità: {items.quantity}</td>
                         <td>
                           <button className="btn btn-info ms-2" 
@@ -53,10 +56,11 @@ const Cart = () => {
               </tbody>
             </table>
           </div>
-          <div className="col-auto ms-auto">
-            <h4>Totale: {cartTotal} </h4>
-            
-
+          <div className="col-auto">
+            <button className="btn btn-danger m-2"
+            onClick={()=>{emptyCart()}}
+            >Svuota Carrello</button>
+            <button className="btn btn-primary m-2">Compra Ora</button>
           </div>
         </div>
       </section>

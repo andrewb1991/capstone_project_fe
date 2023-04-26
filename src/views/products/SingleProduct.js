@@ -16,13 +16,13 @@ import { useCart } from "react-use-cart";
 
 export const SingleProduct = (props) => {
   const { product, thumbnail, description, category, price, item, _id, id } = props;
+
   const {addItem} = useCart();
   return (
     <MDBCol md="6" lg="3" className="mb-4">
       <MDBCard className="h-100">
         <MDBRipple
           rippleColor="light"
-          // rippleTag="div"
           className="bg-image rounded hover-zoom"
         >
           <MDBCardBody>
@@ -30,7 +30,7 @@ export const SingleProduct = (props) => {
             <h5 className="card-title mb-3">{product}</h5>
             <p>{category}</p>
             <h6 className="mb-3">{price} €</h6>
-            {/* <h6 className="mb-3">{description}</h6> */}
+            <h6 className="d-inline-block text-truncate" style={{maxWidth: 200}}>{description}</h6>
           </MDBCardBody>
           <div className="mask">
             <div className="d-flex justify-content-start align-items-end h-100">

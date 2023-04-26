@@ -16,22 +16,39 @@ import {
 } from "mdb-react-ui-kit";
 import axios from "axios";
 import Form from 'react-bootstrap/Form';
+import { Button } from "react-bootstrap";
 import InputGroup from 'react-bootstrap/InputGroup';
 import { SingleProduct } from "./SingleProduct";
 import jwt_decode from 'jwt-decode';
 import Cart from "../cart/Cart";
-import { Button } from "react-bootstrap";
 const session = JSON.parse(localStorage.getItem("authCode"))
 
-function ProductsList(handleClick, props) {
+function AccessoriList(handleClick, props) {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(1);
   const limit = 8;
 
-  const { data, loading, error } = useFetch(`http://localhost:7070/allproductspagination?page=${page}&limit=${limit}`);
+  const { data, loading, error } = useFetch(`http://localhost:7070/Accessori`);
+
   const navigate = useNavigate();
 
+const navigateSmartphone = async (e) => {
+    return navigate("/smartphone");
+  };
+  
+  const navigateAccessori = async (e) =>{
+  return navigate("/accessori")
+  }
+  
+  const navigateTablet = async (e) =>{
+    return navigate("/tablet")
+    }
+  
+    const navigateHome = async (e) =>{
+      return navigate("/home")
+      }
+  
   useEffect(()=>{
   if(session){
     const user = jwt_decode(session)
@@ -58,21 +75,6 @@ const handleNext = () => {
   });
 };
 
-const navigateSmartphone = async (e) => {
-  return navigate("/smartphone");
-};
-
-const navigateAccessori = async (e) =>{
-return navigate("/accessori")
-}
-
-const navigateTablet = async (e) =>{
-  return navigate("/tablet")
-  }
-
-  const navigateHome = async (e) =>{
-    return navigate("/home")
-    }
   return (
     <>
     {loading && <h1>Loading Products...</h1>}
@@ -124,4 +126,4 @@ const navigateTablet = async (e) =>{
                       </MDBContainer>
                       </>
               )}
-export default ProductsList;
+export default AccessoriList;

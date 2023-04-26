@@ -17,6 +17,9 @@ import { SingleProduct } from "./views/products/SingleProduct";
 import ProductEditPage from "./views/products/ProductEditPage";
 import { CartProvider } from "react-use-cart";
 import Cart from "./views/cart/Cart";
+import SmartphoneList from "./views/products/SmartphoneList";
+import AccessoriList from "./views/products/AccessoriList";
+import TabletList from "./views/products/TabletList";
 
 function App() {
   const location = useLocation();
@@ -30,6 +33,9 @@ function App() {
         <CartProvider>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/smartphone" element={<SmartphoneList/>}/>
+          <Route path="/accessori" element={<AccessoriList/>}/>
+          <Route path="/tablet" element={<TabletList/>}/>
           <Route element={<Cart/>}/>
           <Route path="/homeemployee" element={<HomeEmployee />} />
           <Route path="/manageemployess" element={<EmployeesList />} />
