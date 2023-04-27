@@ -20,7 +20,8 @@ import Cart from "./views/cart/Cart";
 import SmartphoneList from "./views/products/SmartphoneList";
 import AccessoriList from "./views/products/AccessoriList";
 import TabletList from "./views/products/TabletList";
-
+import Profile from "./views/profile/Profile";
+import Footer from "./views/Footer";
 function App() {
   const location = useLocation();
 
@@ -39,6 +40,9 @@ function App() {
                 {location.pathname === "/accessori" ? (
           <NavbarPage/>
         ) : null}
+         {location.pathname === "/profile" ? (
+          <NavbarPage/>
+        ) : null}
         <CartProvider>
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -53,11 +57,14 @@ function App() {
             exact
             element={<ManageProductsList />}
           />
+          <Route path="/editproduct" exact element={<ProductEditPage/>}/>
+          <Route path="/profile" exact element={<Profile/>}/>
           {/* <Route path=`/editproduct/${}` element={<ProductEditPage />} /> */}
           <Route path="/home" element={<ProductsList />} />
           <Route element={<SingleProduct />} />
         </Routes>
         </CartProvider>
+        <Footer/>
       </div>
     </>
   );

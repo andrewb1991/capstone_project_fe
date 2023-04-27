@@ -57,6 +57,7 @@ console.log(employee)
       },
       body: JSON.stringify(newCustomer),
     });
+    alert("Benvenuto, accedi con le tue credenziali dalla sezione Login")
     console.log(newCustomer)
   };
 
@@ -75,7 +76,7 @@ console.log(employee)
         if (response.status === 200) {
           localStorage.setItem("authCode", JSON.stringify(jwtDecode(response.data)));
           console.log(response.data)
-          alert("Login!")
+          alert("Accesso eseguito, Clicca su OK per continuare!")
           navigate("/home");
         }
         else{
@@ -96,7 +97,7 @@ console.log(employee)
   .then((response)=>{
   if(response.status === 200){
     localStorage.setItem("emplCode", JSON.stringify(jwtDecode(response.data)));  
-    alert("Login Employee")
+    alert("Accesso riservato eseguito, clicca OK per continuare!")
     navigate("/homeemployee")
   }
   else{

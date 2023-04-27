@@ -45,8 +45,8 @@ export default function App({ size }) {
           return navigate("/home")
           }
 
-  const navigateCart = async(e) =>{
-  return navigate(<Cart/>)
+  const navigateProfile = async(e) =>{
+  return navigate("/profile")
   }
 
   const handleClickHome = async (e) => {
@@ -140,7 +140,7 @@ export default function App({ size }) {
               )}
             </MDBDropdownToggle>
             <MDBDropdownMenu>
-              <MDBDropdownItem link>Visualizza Account</MDBDropdownItem>
+              <MDBDropdownItem link onClick={navigateProfile}>Visualizza Account</MDBDropdownItem>
               <MDBDropdownItem link href="/">
                 Esci
               </MDBDropdownItem>

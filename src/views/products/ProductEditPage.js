@@ -25,16 +25,16 @@ import {
   MDBCheckbox,
 } from "mdb-react-ui-kit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const ProductEditPage = (_id) => {
+const ProductEditPage = () => {
     const navigate = useNavigate();
   const [fullscreenXlModal, setFullscreenXlModal] = useState(false);
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
   const [newProductFrom, setNewProductForm] = useState({});
   const [editProductForm, setEditProductForm] = useState({});
   const [basicModal, setBasicModal] = useState(false);
+  const {_id} = useParams()
 
-  const editProduct = async (_id) => {
-
+  const editProductSubmit = async (e, _id) => {
     const editProduct = {
       product: editProductForm.product,
       thumbnail: editProductForm.thumbnail,
@@ -55,6 +55,9 @@ const ProductEditPage = (_id) => {
       });
   };
   return (
+    <>
+<div>Modifica {}</div>
+<div>
 <form>
                 <MDBInput onChange={(e) =>
                     setEditProductForm({
@@ -122,6 +125,9 @@ const ProductEditPage = (_id) => {
                   name="description"
                 />
               </form>
+              <MDBBtn onClick={(e)=>editProductSubmit(e, _id)} >Modifica</MDBBtn>
+              </div>
+              </>
               )
 }
 
