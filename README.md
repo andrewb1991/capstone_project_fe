@@ -79,53 +79,102 @@ Verifica di avere installato l’ultima versione di NodeJs, in caso installala d
 1. Clona la repo: https://github.com/andrewb1991/capstone_project_fe per il frontend,
 2. Clona la repo: https://github.com/andrewb1991/Capstone_Project_backend per il backend,
 3. Installa i seguenti pacchetti per il frontend da terminale per rendere funzionale il progetto: 
-"@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "@fortawesome/fontawesome-free": "^6.4.0",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "@hookform/resolvers": "^3.1.0",
-    "@mui/material": "^5.11.16",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.3.5",
-    "jwt-decode": "^3.1.2",
-    "mdb-react-ui-kit": "^6.0.0",
-    "mdb-ui-kit": "^6.2.0",
-    "mdbreact": "^5.2.0",
-    "multer": "^1.4.5-lts.1",
-    "node-localstorage": "^2.2.1",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.7.2",
-    "react-confirm-alert": "^3.0.6",
-    "react-custom-alert": "^1.0.4",
-    "react-dom": "^18.2.0",
-    "react-dotenv": "^0.1.3",
-    "react-icons": "^4.8.0",
-    "react-jsx": "^1.0.0",
-    "react-quill": "^2.0.0",
-    "react-redux": "^8.0.5",
-    "react-router": "^6.10.0",
-    "react-router-dom": "^6.10.0",
-    "react-scripts": "5.0.1",
-    "react-use-cart": "^1.13.0",
-    "router": "^1.3.8",
-    "web-vitals": "^2.1.4",
-    "yup": "^1.1.1"
+<ul>
+<li>    "@emotion/react": "^11.10.6",
+</li>
+<li>    "@emotion/styled": "^11.10.6",
+</li>
+<li>    "@fortawesome/fontawesome-free": "^6.4.0",
+</li>
+<li>    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+</li>
+<li>    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+</li>
+<li>    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+</li>
+<li>    "@fortawesome/react-fontawesome": "^0.2.0",
+</li>
+<li>    "@hookform/resolvers": "^3.1.0",
+</li>
+<li>    "@mui/material": "^5.11.16",
+</li>
+<li>    "@testing-library/jest-dom": "^5.16.5",
+</li>
+<li>    "@testing-library/react": "^13.4.0",
+</li>
+<li>    "@testing-library/user-event": "^13.5.0",
+</li>
+<li>    "axios": "^1.3.5",
+</li>
+<li>    "jwt-decode": "^3.1.2",
+</li>
+<li>    "mdb-react-ui-kit": "^6.0.0",
+</li>
+<li>    "mdb-ui-kit": "^6.2.0",
+</li>
+<li>    "mdbreact": "^5.2.0",
+</li>
+<li>    "multer": "^1.4.5-lts.1",
+</li>
+<li>    "node-localstorage": "^2.2.1",
+</li>
+<li>    "react": "^18.2.0",
+</li>
+<li>    "react-bootstrap": "^2.7.2",
+</li>
+<li>    "react-confirm-alert": "^3.0.6",
+</li>
+<li>    "react-custom-alert": "^1.0.4",
+</li>
+<li>    "react-dom": "^18.2.0",
+</li>
+<li>    "react-dotenv": "^0.1.3",
+</li>
+<li>    "react-icons": "^4.8.0",
+</li>
+<li>    "react-jsx": "^1.0.0",
+</li>
+<li>    "react-quill": "^2.0.0",
+</li>
+<li>    "react-redux": "^8.0.5",
+</li>
+<li>    "react-router": "^6.10.0",
+</li>
+<li>    "react-router-dom": "^6.10.0",
+</li>
+<li>    "react-scripts": "5.0.1",
+</li>
+<li>    "react-use-cart": "^1.13.0",
+</li>
+<li>    "router": "^1.3.8",
+</li>
+<li>    "web-vitals": "^2.1.4",
+</li>
+<li>    "yup": "^1.1.1"
+</li>
+</ul>
 
 4.  Installa i seguenti pacchetti per il backend da terminale per rendere funzionale il progetto: 
-"bcrypt": "^5.1.0",
-    "cloudinary": "^1.35.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.3",
-    "multer": "^1.4.5-lts.1",
-    "multer-storage-cloudinary": "^4.0.0"
+<ul>
+<li>"bcrypt": "^5.1.0",
+</li>
+<li>    "cloudinary": "^1.35.0",
+</li>
+<li>    "cors": "^2.8.5",
+</li>
+<li>    "dotenv": "^16.0.3",
+</li>
+<li>    "express": "^4.18.2",
+</li>
+<li>    "jsonwebtoken": "^9.0.0",
+</li>
+<li>    "mongoose": "^7.0.3",
+</li>
+<li>    "multer": "^1.4.5-lts.1",
+</li>
+<li>    "multer-storage-cloudinary": "^4.0.0"
+</li>
+</ul>
 
 5. Dal terminale del progetto in frontend inserire “npm start” per far partire il progetto, mentre nel terminale del progetto in backend inserire "npm run dev" per avviare il database.
 
@@ -136,7 +185,8 @@ Verifica di avere installato l’ultima versione di NodeJs, in caso installala d
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+1) Login Page
+<img src="./imagesforreadme/productpage.png">
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
