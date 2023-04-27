@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832196/white_logo_color_background_qii5ot.jpg">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://res.cloudinary.com/dpb7beo1e/image/upload/v1681832196/white_logo_color_background_qii5ot.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">errSmart</h3>
