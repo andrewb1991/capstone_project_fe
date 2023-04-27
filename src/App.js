@@ -57,9 +57,8 @@ function App() {
             exact
             element={<ManageProductsList />}
           />
-          <Route path="/editproduct" exact element={<ProductEditPage/>}/>
+          <Route path="/editproduct/:id" exact element={<ProductEditPage/>}/>
           <Route path="/profile" exact element={<Profile/>}/>
-          {/* <Route path=`/editproduct/${}` element={<ProductEditPage />} /> */}
           <Route path="/home" element={<ProductsList />} />
           <Route element={<SingleProduct />} />
         </Routes>
