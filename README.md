@@ -37,40 +37,30 @@
   </ol>
 </details>
 
-
-
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="/imagesforreadme/first.jpeg">
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+<img src="https://res.cloudinary.com/dpb7beo1e/image/upload/v1682611170/first_zhi96j.png" width="1400" height="700">
+Il capstone project “errSmart” vuole ricreare un portale web di prodotti hi-tech con più funzionalità:
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
+- accesso diversificato da cliente a dipendente 
+- creazione utente semplificata in home page
+- Visualizzazione dei prodotti con le sue caratteristiche e con il prezzo d’acquisto 
+- Possibilità di creare un carrello di prodotti da ritirare in negozio
+- Possibilità del dipendente di creare , modificare o eliminare prodotti
+- Possibilità dell’amministratore di creare, modificare o eliminare dipendenti dal database
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
+### Frontend Built With
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
 
+
+### Backend Built With
+- MongoDb
+- Node JS
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -78,34 +68,66 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Di seguito la procedura corretta per accedere al progetto.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Verifica di avere installato l’ultima versione di NodeJs, in caso installala da terminale con il codice seguente:  npm install npm@latest -g
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. Clona la repo: https://github.com/andrewb1991/capstone_project_fe per il frontend,
+2. Clona la repo: https://github.com/andrewb1991/Capstone_Project_backend per il backend,
+3. Installa i seguenti pacchetti per il frontend da terminale per rendere funzionale il progetto: 
+"@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@hookform/resolvers": "^3.1.0",
+    "@mui/material": "^5.11.16",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.3.5",
+    "jwt-decode": "^3.1.2",
+    "mdb-react-ui-kit": "^6.0.0",
+    "mdb-ui-kit": "^6.2.0",
+    "mdbreact": "^5.2.0",
+    "multer": "^1.4.5-lts.1",
+    "node-localstorage": "^2.2.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-confirm-alert": "^3.0.6",
+    "react-custom-alert": "^1.0.4",
+    "react-dom": "^18.2.0",
+    "react-dotenv": "^0.1.3",
+    "react-icons": "^4.8.0",
+    "react-jsx": "^1.0.0",
+    "react-quill": "^2.0.0",
+    "react-redux": "^8.0.5",
+    "react-router": "^6.10.0",
+    "react-router-dom": "^6.10.0",
+    "react-scripts": "5.0.1",
+    "react-use-cart": "^1.13.0",
+    "router": "^1.3.8",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.1.1"
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+4.  Installa i seguenti pacchetti per il backend da terminale per rendere funzionale il progetto: 
+"bcrypt": "^5.1.0",
+    "cloudinary": "^1.35.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0"
+
+5. Dal terminale del progetto in frontend inserire “npm start” per far partire il progetto, mentre nel terminale del progetto in backend inserire "npm run dev" per avviare il database.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,81 +144,19 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
-<!-- ROADMAP -->
-## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
 ## Contact
+Andrea Bramucci - @andrewb1991 - andrea.bramucci@gmail.com
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Project Link: 
+Frontend: https://github.com/andrewb1991/capstone_project_fe
+Backend: https://github.com/andrewb1991/Capstone_Project_backend 
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
