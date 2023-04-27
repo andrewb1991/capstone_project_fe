@@ -29,11 +29,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -185,10 +181,16 @@ Verifica di avere installato l’ultima versione di NodeJs, in caso installala d
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-1) Login Page
+1) Pagina Prodotti
 <img src="./imagesforreadme/productpage.png">
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+2) Carrello Prodotti
+<img src="./imagesforreadme/cartpage.png">
+3) Pagina Profilo Utente
+<img src="./imagesforreadme/profilepage.png">
+4) Pagina iniziale per Amministratore
+<img src="./imagesforreadme/adminprofilepage.png">
+5) Pagina di Controllo Prodotti
+<img src="./imagesforreadme/editproductpage.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
