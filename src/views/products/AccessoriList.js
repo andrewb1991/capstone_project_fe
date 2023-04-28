@@ -29,7 +29,7 @@ function AccessoriList(handleClick, props) {
   const [pageCount, setPageCount] = useState(1);
   const limit = 8;
 
-  const { data, loading, error } = useFetch(`http://localhost:7070/Accessori`);
+  const { data, loading, error } = useFetch(process.env.REACT_APP_ACCESSORIES_URL);
 
   const navigate = useNavigate();
 

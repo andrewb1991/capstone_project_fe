@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import {
   MDBBadge,
+  MDBContainer,
   MDBBtn,
   MDBTable,
   MDBTableHead,
@@ -40,9 +41,7 @@ const ManageProductsList = () => {
   const handleBackPage = () => {
     navigate("/homeemployee");
   };
-  const toggleShowEdit = () => {
-    setBasicModal(!basicModal);
-  };
+
 
   const editSubmit = async (id, e) => {
     e.preventDefault();
@@ -54,7 +53,6 @@ const ManageProductsList = () => {
         {
           label: "Yes",
           onClick: () =>
-            // <ProductEditPage key={_id}/>
             navigate(`/editproduct/${id}`),
         },
         {
@@ -307,7 +305,7 @@ const ManageProductsList = () => {
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
-                    <MDBModal
+                    {/* <MDBModal
                       show={basicModal}
                       setShow={setBasicModal}
                       tabIndex="-1"
@@ -401,7 +399,7 @@ const ManageProductsList = () => {
                           </MDBModalFooter>
                         </MDBModalContent>
                       </MDBModalDialog>
-                    </MDBModal>
+                    </MDBModal> */}
                     <td>
                       <MDBBtn
                         onClick={(e) => deleteSubmit(product._id, e)}

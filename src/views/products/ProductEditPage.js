@@ -10,6 +10,7 @@ import {
   MDBBadge,
   MDBBtn,
   MDBTable,
+  MDBContainer,
   MDBTableHead,
   MDBTableBody,
   MDBModal,
@@ -40,16 +41,32 @@ const ProductEditPage = () => {
   const data = await fetch(`http://localhost:7070/allproducts/${id}`)
   const response = await data.json()
   setSingleProduct(response)
+  console.log(response)
 }
   useEffect(()=>{
   getSingleProduct()
   },[])
 
-  console.log(singleProduct)
-  // const { data, loading, error } = useFetch(`http://localhost:7070/allproducts/${id}`);
-  // console.log(data);
 
-  const editProductSubmit = async (e, _id) => {
+  const editProductSubmit = (_id, e) =>{
+  confirmAlert({
+    title: `Modifica`,
+    message: `Vuoi modificare il prodotto ${singleProduct._id}?`,
+    className: "text-primary",
+    buttons: [
+      {
+        label: "Yes",
+        onClick: () => editProduct(_id, e),
+      },
+      {
+        label: "No",
+        onClick: () => alert("Click No"),
+      },
+    ],
+  })
+  }
+
+  const editProduct = async (e, _id) => {
     const editProduct = {
       product: editProductForm.product,
       thumbnail: editProductForm.thumbnail,
@@ -61,8 +78,7 @@ const ProductEditPage = () => {
       .patch(`http://localhost:7070/allproducts/${_id}`, editProduct)
       .then((response) => {
         if (response.status === 200) {
-          window.confirm(`Modificare il prodotto ${_id}`);
-          window.location.reload(true);
+          alert("Prodotto modificato con successo!")
           navigate("/manageproducts");
         } else {
           return alert("Invalid Product Form");
@@ -71,83 +87,61 @@ const ProductEditPage = () => {
   };
   return (
     <>
-      <div>Modifica {}</div>
+         <h1 className="text-primary">Modifica {singleProduct && singleProduct.product}</h1>
+
+     <MDBContainer className="d-flex col-1">
       <div>
         <form>
-          <input type="text" value={singleProduct.product}/>
-          <MDBInput
-            onChange={(e) =>
-              setEditProductForm({
-                ...editProductForm,
-                product: e.target.value,
-              })
-            }
-            className="text-primary"
-            wrapperClass="mb-4"
-            id="form6Example3"
-            label="Prodotto"
-            name="product"
-          />
-          <MDBInput
-            onChange={(e) =>
-              setEditProductForm({
-                ...editProductForm,
-                thumbnail: e.target.value,
-              })
-            }
-            wrapperClass="mb-4"
-            id="typeURL"
-            type="url"
-            label="URL Immagine"
-            name="thumbnail"
-          />
-          <MDBInput
-            onChange={(e) =>
-              setEditProductForm({
-                ...editProductForm,
-                category: e.target.value,
-              })
-            }
-            className="text-primary"
-            wrapperClass="mb-4"
-            type="email"
-            id="form6Example5"
-            label="Categoria"
-            name="category"
-          />
-          <MDBInput
-            onChange={(e) =>
-              setEditProductForm({
-                ...editProductForm,
-                price: e.target.value,
-              })
-            }
-            className="text-primary"
-            wrapperClass="mb-4"
-            type="tel"
-            id="form6Example6"
-            label="Prezzo"
-            name="price"
-          />
-
-          <MDBInput
-            onChange={(e) =>
-              setEditProductForm({
-                ...editProductForm,
-                description: e.target.value,
-              })
-            }
-            className="text-primary"
-            wrapperClass="mb-4"
-            textarea
-            id="form6Example7"
-            rows={4}
-            label="Aggiungi una descrizione"
-            name="description"
-          />
+          <label className="text-success">
+          Prodotto:
+         <input className="mb-2 text-primary" type="text" defaultValue={singleProduct && singleProduct.product} onChange={(e) =>
+                setEditProductForm({
+                  ...editProductForm,
+                  product: e.target.value,
+                })
+              }/>
+              </label>
+              <label className="text-success">
+                Immagine:
+         <input type="text" defaultValue={singleProduct && singleProduct.thumbnail} onChange={(e) =>
+                setEditProductForm({
+                  ...editProductForm,
+                  thumbnail: e.target.value,
+                })
+              }/>
+              </label>
+              <label className="text-success">
+                Categoria: 
+         <input type="text" defaultValue={singleProduct && singleProduct.category} onChange={(e) =>
+                setEditProductForm({
+                  ...editProductForm,
+                  category: e.target.value,
+                })
+              }/>
+</label>
+<label className="text-success">
+  Prezzo:
+         <input type="text" defaultValue={singleProduct && singleProduct.price} onChange={(e) =>
+                setEditProductForm({
+                  ...editProductForm,
+                  price: e.target.value,
+                })
+              }/>
+              </label>
+              <label className="text-success">
+                Descrizione:
+         <input type="text" defaultValue={singleProduct && singleProduct.description} onChange={(e) =>
+                setEditProductForm({
+                  ...editProductForm,
+                  description: e.target.value,
+                })
+              }/>
+              </label>
         </form>
         <MDBBtn onClick={(e) => editProductSubmit(e, id)}>Modifica</MDBBtn>
       </div>
+     </MDBContainer>
+
     </>
   );
 };

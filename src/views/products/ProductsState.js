@@ -9,7 +9,7 @@ export const getProducts = createAsyncThunk(
   "products/getProducts/",
   async (id) => {
     try {
-      const data = await fetch(`http://localhost:7070/allproducts/`, {
+      const data = await fetch(process.env.REACT_APP_PRODUCTS_URL, {
         headers: {
           "Content-Type": "application/json",
         },

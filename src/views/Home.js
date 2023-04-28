@@ -50,7 +50,7 @@ console.log(employee)
 
   const registerUser = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:7070/register/", {
+    await fetch(process.env.REACT_APP_REGISTER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ console.log(employee)
   const loginUser = async (e) => {
     e.preventDefault();
     await axios
-      .post(`http://localhost:7070/login`, Customer)
+      .post(process.env.REACT_APP_LOGIN_URL, Customer)
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("authCode", JSON.stringify(jwtDecode(response.data)));
@@ -93,7 +93,7 @@ console.log(employee)
   const loginEmployee = async (e) =>{
   e.preventDefault();
   await axios
-  .post("http://localhost:7070/auth/employees", Employee)
+  .post(process.env.REACT_APP_EMPLOYEE_URL, Employee)
   .then((response)=>{
   if(response.status === 200){
     localStorage.setItem("emplCode", JSON.stringify(jwtDecode(response.data)));  

@@ -29,7 +29,7 @@ function TabletList(handleClick, props) {
   const [pageCount, setPageCount] = useState(1);
   const limit = 8;
 
-  const { data, loading, error } = useFetch(`http://localhost:7070/Tablet`);
+  const { data, loading, error } = useFetch(process.env.REACT_APP_TABLET_URL);
 
   
   useEffect(()=>{
