@@ -35,6 +35,27 @@ const EmployeesList = () => {
   const toggleShow = () => setFullscreenXlModal(!fullscreenXlModal);
   const [newEmployeeForm, setNewEmployeeForm] = useState({});
 
+    const editSubmit = async (id, e) => {
+    e.preventDefault();
+    confirmAlert({
+      title: `Modifica`,
+      message: `Vuoi modificare il dipendente ${id}?`,
+      className: "text-primary",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () =>
+            navigate(`/editemployee/${id}`),
+        },
+        {
+          label: "No",
+          onClick: () => alert("Click No"),
+        },
+      ],
+    });
+  };
+
+
   const addNewEmployee = async (e) => {
     const newEmployee = {
       code: newEmployeeForm.code,
@@ -241,7 +262,8 @@ const EmployeesList = () => {
                     </td>
                     <td>
                       {" "}
-                      <MDBBtn color='secondary' rounded size="sm">
+                      <MDBBtn color='secondary' rounded size="sm" onClick={(e)=>editSubmit(employee
+                        ._id, e)}>
                         <i class="fa-solid fa-pen-to-square fa-xl"></i>
                       </MDBBtn>
                     </td>
