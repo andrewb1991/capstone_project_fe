@@ -24,6 +24,7 @@
     "mdb-ui-kit": "^6.2.0",
     "mdbreact": "^5.2.0",
     "multer": "^1.4.5-lts.1",
+    "netlify-cli": "^14.3.1",
     "node-localstorage": "^2.2.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
@@ -47,6 +48,7 @@
     "start": "env-cmd -f .env react-scripts start",
     "build:staging": "env-cmd -f .env react-scripts build",
     "build:production": "env-cmd -f .env react-scripts build",
+    "deploy": "yarn build && netlify deploy --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
