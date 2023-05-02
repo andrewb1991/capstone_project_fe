@@ -46,7 +46,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
-    "build:staging": "env-cmd -f .env react-scripts build",
+    "build": "env-cmd -f .env react-scripts build",
     "build:production": "env-cmd -f .env react-scripts build",
     "deploy": "yarn build && netlify deploy --prod",
     "test": "react-scripts test",
