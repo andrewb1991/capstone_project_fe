@@ -173,6 +173,7 @@ Verifica di avere installato l’ultima versione di NodeJs, in caso installala d
 </ul>
 
 5. Dal terminale del progetto in frontend inserire “npm start” per far partire il progetto, mentre nel terminale del progetto in backend inserire "npm run dev" per avviare il database.
+6. Del server è stato eseguito il deploy, quindi si può utilizzare il seguente URL anzichè http://localhost: (numero porta):                    <p>https://capstone-project-server-sy5q.onrender.com</p> 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -201,8 +202,10 @@ Verifica di avere installato l’ultima versione di NodeJs, in caso installala d
 Andrea Bramucci - @andrewb1991 - andrea.bramucci@gmail.com
 
 Project Link: 
-Frontend: https://github.com/andrewb1991/capstone_project_fe
-Backend: https://github.com/andrewb1991/Capstone_Project_backend 
+<p>Frontend: https://github.com/andrewb1991/capstone_project_fe</p>
+<p>Backend: https://github.com/andrewb1991/Capstone_Project_backend </p>
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
