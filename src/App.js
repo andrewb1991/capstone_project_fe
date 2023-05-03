@@ -23,6 +23,7 @@ import TabletList from "./views/products/TabletList";
 import Profile from "./views/profile/Profile";
 import Footer from "./views/Footer";
 import EmployeeEditPage from "./views/employees/EmployeeEditPage"
+import Orders from "./views/employees/Orders";
 function App() {
   const location = useLocation();
 
@@ -52,6 +53,7 @@ function App() {
           <Route path="/tablet" element={<TabletList/>}/>
           <Route id="cart" element={<Cart/>}/>
           <Route path="/homeemployee" element={<HomeEmployee />} />
+          <Route path="/orders" element={<Orders/>}/>
           <Route path="/manageemployess" element={<EmployeesList />} />
           <Route path="/editemployee/:id" exact element={<EmployeeEditPage/>}/>
 

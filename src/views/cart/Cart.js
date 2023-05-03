@@ -13,7 +13,7 @@ const Cart = () => {
     emptyCart,
   } = useCart();
   console.log(cartTotal)
-  if (isEmpty) return <h6 className="text-center">Il carrello è vuoto</h6>;
+  if (isEmpty) return <h1 className="text-center text-primary">Il carrello è vuoto</h1>;
   return (
     <>
       <section className="py-4 container">

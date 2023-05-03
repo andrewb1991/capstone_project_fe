@@ -33,6 +33,9 @@ const HomeEmployee = () => {
       navigate("/")
       }
     
+    const handleOrdersPage = () =>{
+    navigate("/orders")
+    }
 
   return (
 
@@ -55,6 +58,9 @@ const HomeEmployee = () => {
         </MDBBtn>
         <MDBBtn onClick={handleEmployesPage} className='m-1 btn-lg text-center' color='success'>
           GESTIONE DIPENDENTI
+        </MDBBtn>
+        <MDBBtn onClick={handleOrdersPage} className='m-1 btn-lg text-center' color='warning'>
+          VISUALIZZA ORDINI
         </MDBBtn>
         <MDBBtn onClick={handleHomePage} className='m-1 btn-lg text-center' color='danger'>
           ESCI
